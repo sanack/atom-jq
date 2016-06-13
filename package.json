@@ -1,0 +1,45 @@
+{
+  "name": "atom-jq",
+  "main": "./lib/init.js",
+  "description": "",
+  "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard --versbose | snazzy",
+    "test": ""
+  },
+  "activationCommands": {},
+  "repository": "https://github.com/davesnx/atom-jq",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.1.0",
+    "fs-plus": "2.x",
+    "node-jq": "^0.0.3",
+    "path": "^0.12.7",
+    "temp": "0.8.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "snazzy": "^4.0.0",
+    "standard": "^7.1.2"
+  },
+  "providedServices": {
+    "atom-jq": {
+      "description": "",
+      "versions": {
+        "0.0.1": "provideService"
+      }
+    }
+  },
+  "configSchema": {},
+  "standard": {
+    "globals": [
+      "atom"
+    ]
+  }
+}

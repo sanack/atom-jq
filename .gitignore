@@ -1,0 +1,41 @@
+# OSX and ide's folder attributes
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+
+#  common node files and folders
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+node_modules
+npm-debug.log
+
+build/Release # Compiled binary addons (http://nodejs.org/api/addons.html)
+
+# always-ignore extensions
+*.diff
+*.err
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+
+# nodemon
+.monitor
