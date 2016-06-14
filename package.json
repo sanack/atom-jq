@@ -16,7 +16,7 @@
   "dependencies": {
     "atom-space-pen-views": "^2.1.0",
     "fs-plus": "2.x",
-    "node-jq": "^0.0.3",
+    "node-jq": "^0.0.6",
     "path": "^0.12.7",
     "temp": "0.8.1"
   },
