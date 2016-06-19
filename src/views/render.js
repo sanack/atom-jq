@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
-import { PanelView } from './PanelView'
+import * as PanelView from './PanelView'
 
 let root = null
 

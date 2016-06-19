@@ -3,7 +3,7 @@
 import React, { Component } from 'react-for-atom'
 import classNames from 'classnames'
 
-export class PanelView extends Component {
+export default class PanelView extends Component {
   constructor (props) {
     super(props)
   }
