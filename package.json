@@ -16,8 +16,11 @@
   "dependencies": {
     "atom-space-pen-views": "^2.2.0",
     "fs-plus": "2.x",
+    "jquery": "^3.0.0",
     "node-jq": "latest",
     "path": "^0.12.7",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
     "temp": "0.8.1"
   },
   "devDependencies": {
