@@ -28,9 +28,6 @@ export const PanelView = ({ isHidden }) => {
           }}
         />
       </HotKeys>
-      <button onClick={() => console.log('RUN BUTTON')}>
-        RUN
-      </button>
     </div>
   )
 }

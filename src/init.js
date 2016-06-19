@@ -2,10 +2,11 @@
 /* global atom */
 
 import { CompositeDisposable } from 'atom'
-import { start, destroy, togglePanel } from './views/render'
+import { start, destroy, togglePanel } from './render'
 
 export default {
   activate (state) {
+    console.log('atom-jq activated')
     this.subscriptions = new CompositeDisposable()
 
     this.subscriptions.add(

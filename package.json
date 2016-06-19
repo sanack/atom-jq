@@ -1,6 +1,6 @@
 {
   "name": "atom-jq",
-  "main": "./lib/init.js",
+  "main": "./src/init.js",
   "description": "",
   "version": "0.0.2",
   "license": "MIT",
@@ -20,7 +20,8 @@
     "node-jq": "latest",
     "path": "^0.12.7",
     "react": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react-dom": "^0.14.8",
+    "react-hotkeys": "^0.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.0.0",
@@ -31,14 +32,7 @@
     "snazzy": "^4.0.0",
     "standard": "^7.1.2"
   },
-  "providedServices": {
-    "atom-jq": {
-      "description": "",
-      "versions": {
-        "0.0.1": "provideService"
-      }
-    }
-  },
+  "providedServices": {},
   "configSchema": {},
   "standard": {
     "globals": [
