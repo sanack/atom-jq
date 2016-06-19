@@ -1,6 +1,6 @@
 {
   "name": "atom-jq",
-  "main": "./src/init.js",
+  "main": "./src/index.js",
   "description": "",
   "version": "0.0.2",
   "license": "MIT",
@@ -21,7 +21,9 @@
     "path": "^0.12.7",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "react-hotkeys": "^0.8.0"
+    "react-hotkeys": "^0.8.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
   },
   "devDependencies": {
     "babel-cli": "^6.0.0",
