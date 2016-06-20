@@ -5,17 +5,33 @@
 #atom-jq-root {
   @min-width: 200px; // min width before it starts scrolling
 
-  .input-block {
+  .jq-panel {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    min-width: @min-width;
+    padding: 20px;
+
+    &__hidden {
+      display: none !important;
+    }
   }
 
-  .input-block-item {
+  .jq-panel-input {
     flex: 1;
-    padding: @component-padding / 2;
+    min-width: 450px;
+    width: 100%;
+    margin-right: 20px;
   }
+
+  // .input-block {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   width: 100%;
+  //   min-width: @min-width;
+  // }
+  //
+  // .input-block-item {
+  //   flex: 1;
+  //   padding: @component-padding / 2;
+  // }
 
   .btn-group {
     display: flex;
@@ -61,14 +77,6 @@
       color: @text-color;
     }
   }
-
-  .editor-container {
-    position: relative;
-    atom-text-editor {
-      width: 100%;
-    }
-  }
-
 }
 
 // Buffer find and replace

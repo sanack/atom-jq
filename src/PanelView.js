@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { jqFilterSuccess, jqFilterFailure } from './actions'
 import { run } from 'node-jq'
-import AtomTextEditor from './AtomTextEditor'
+import AtomTextInput from './AtomTextInput'
 
 const jq = (filter) => {
   return (dispatch, getState) => {
@@ -24,14 +24,17 @@ const PanelView = ({ isPanelHidden, dispatch }) => {
     dispatch(jq(input.value))
   }
 
-  const stylePanel = {
-    display: (!isPanelHidden && 'none')
-  }
+  const panelClasses = classNames(
+    'jq-panel',
+    {
+      'jq-panel__hidden': isPanelHidden
+    }
+  )
 
   return (
-    <div className='input-block' style={stylePanel}>
-      <AtomTextEditor
-        className='input-block-item'
+    <div className={panelClasses}>
+      <AtomTextInput
+        className='jq-panel-input  input-block-item'
         ref={(node) => { input = node }}
       />
       <button
