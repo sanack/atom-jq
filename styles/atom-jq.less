@@ -1,56 +1,9 @@
 @import "ui-variables";
 @import "syntax-variables";
 
-// result markers
-atom-text-editor,
-atom-text-editor::shadow {
-  .find-result .region {
-    background-color: transparent;
-    border-radius: @component-border-radius;
-    border: 1px solid @syntax-result-marker-color;
-    box-sizing: border-box;
-    z-index: 0;
-  }
-
-  .current-result .region {
-    border-radius: @component-border-radius;
-    border: 1px solid @syntax-result-marker-color-selected;
-    box-sizing: border-box;
-    z-index: 0;
-  }
-
-  .find-result,
-  .current-result {
-    display: none;
-  }
-}
-
-atom-workspace.find-visible {
-  atom-text-editor,
-  atom-text-editor::shadow {
-    .find-result,
-    .current-result {
-      display: block;
-    }
-  }
-}
-
 // Both project and buffer FNR styles
-.find-and-replace,
-.project-find {
+#atom-jq-root {
   @min-width: 200px; // min width before it starts scrolling
-
-  -webkit-user-select: none;
-  padding: @component-padding/2;
-  overflow-x: auto;
-
-  .header {
-    padding: @component-padding/4 @component-padding/2;
-    min-width: @min-width;
-  }
-  .header-item {
-    margin: @component-padding/4 0;
-  }
 
   .input-block {
     display: flex;
@@ -58,8 +11,8 @@ atom-workspace.find-visible {
     width: 100%;
     min-width: @min-width;
   }
+
   .input-block-item {
-    display: flex;
     flex: 1;
     padding: @component-padding / 2;
   }

@@ -15,10 +15,13 @@ export default {
   activate () {
     console.log('atom-jq activated')
     rootDOMNode = document.createElement('atom-panel')
-    document.querySelector('body').appendChild(rootDOMNode)
+    document.querySelector('.vertical .bottom').appendChild(rootDOMNode)
     rootDOMNode.setAttribute('id', rootDOMId)
 
-    render(<App {...store} />, rootDOMNode)
+    render(
+      <App {...store} />,
+      rootDOMNode
+    )
 
     this.subscriptions = new CompositeDisposable()
 

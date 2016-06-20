@@ -1,10 +1,11 @@
 /** @babel */
 
 import React from 'react'
-// import classNames from 'classnames'
+import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { jqFilterSuccess, jqFilterFailure } from './actions'
 import { run } from 'node-jq'
+import AtomTextEditor from './AtomTextEditor'
 
 const jq = (filter) => {
   return (dispatch, getState) => {
@@ -23,26 +24,18 @@ const PanelView = ({ isPanelHidden, dispatch }) => {
     dispatch(jq(input.value))
   }
 
-  const stylesInput = {
-    borderRadius: '2px',
-    border: 'none',
-    margin: '20px',
-    lineHeight: '30px',
-    color: 'black'
-  }
-
   const stylePanel = {
     display: (!isPanelHidden && 'none')
   }
 
   return (
-    <div style={stylePanel}>
-      <input
-        type='text'
-        style={stylesInput}
+    <div className='input-block' style={stylePanel}>
+      <AtomTextEditor
+        className='input-block-item'
         ref={(node) => { input = node }}
       />
       <button
+        className='btn'
         type='submit'
         onClick={runFilter}
       >
