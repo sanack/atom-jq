@@ -10,13 +10,13 @@ const reducers = (state = initialState, action) => {
     case 'TOGGLE_PANEL_VIEW':
       return {
         ...state,
-        isPanelViewHidden: true
+        isPanelViewHidden: !state.isPanelViewHidden
       }
 
     case 'RUN_JQ_FILTER':
       return {
         ...state,
-        isPanelViewHidden: true
+        filter: action.filter
       }
 
     default:

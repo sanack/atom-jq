@@ -1,7 +1,6 @@
 /** @babel */
 
 // import { run } from 'node-jq'
-import ACTION from './actions'
 
 export const togglePanelView = () => {
   return {

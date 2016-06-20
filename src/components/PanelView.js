@@ -2,32 +2,69 @@
 
 import React from 'react'
 import classNames from 'classnames'
-import { HotKeys } from 'react-hotkeys'
+import { connect } from 'react-redux'
+import { runJqFilter } from '../actions'
 
-export const PanelView = ({ isHidden }) => {
+let PanelView = ({ isPanelViewHidden, dispatch }) => {
   const classes = classNames(
     'atom-jq-panel-view',
     {
-      'atom-jq-hidden': isHidden
+      'atom-jq-hidden': false
     }
   )
 
-  const keyHandlers = {
-    'enter': () => console.log('ENTERPRESSED')
+  let input
+
+  const runFilter = (event) => {
+    event.preventDefault()
+    if (!input.value) {
+      return
+    }
+    dispatch(runJqFilter(input.value))
+  }
+
+  const stylesInput = {
+    borderRadius: '2px',
+    border: 'none',
+    margin: '20px',
+    lineHeight: '30px',
+    color: 'black'
+  }
+
+  const stylePanel = {
+    display: (!isPanelViewHidden && 'none')
   }
 
   return (
-    <div className={classes} tabindex='-1'>
-      <p>atom-jq is rendered! {isHidden}</p>
-      <HotKeys handlers={keyHandlers}>
+    <div style={stylePanel} tabindex='-1'>
+      <form onSubmit={runFilter}>
         <input
-          type='text'
-          value={isHidden}
-          onChange={(event) => {
-            console.log('event', event.target.value)
-          }}
+          style={stylesInput}
+          ref={(node) => { input = node }}
         />
-      </HotKeys>
+        <button type='submit'>
+          RUN FILTER
+        </button>
+      </form>
     </div>
   )
 }
+
+const mapStateToProps = ({ isPanelViewHidden }) => {
+  return {
+    isPanelViewHidden
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch
+  }
+}
+
+PanelView = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PanelView)
+
+export default PanelView

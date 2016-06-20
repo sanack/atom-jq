@@ -3,25 +3,30 @@
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { PanelView } from './components/PanelView'
+import { applyMiddleware, createStore } from 'redux'
+import createLogger from 'redux-logger'
+import PanelView from './components/PanelView'
 import reducers from './reducers'
 
 let rootDOMNode = null
 const rootDOMId = 'atom-jq-root'
 
 export const destroy = () => {
+  console.clear()
   document.querySelector(`#${rootDOMId}`).remove()
   unmountComponentAtNode(rootDOMNode)
 }
 
 export const start = () => {
-  console.log('Start atom-jq')
   rootDOMNode = document.createElement('div')
   document.querySelector('.vertical').appendChild(rootDOMNode)
   rootDOMNode.setAttribute('id', rootDOMId)
 
-  const store = createStore(reducers)
+  const logger = createLogger()
+  const store = createStore(
+    reducers,
+    applyMiddleware(logger)
+  )
 
   render(
     <Provider store={store}>
@@ -29,8 +34,6 @@ export const start = () => {
     </Provider>,
     rootDOMNode
   )
-}
 
-export const togglePanel = () => {
-  console.log('RenderPanelView')
+  return store
 }
