@@ -1,46 +1,37 @@
 /** @babel */
 
+import { ACTIONS as ACTION } from './constants'
+
 export const togglePanelView = () => {
   return {
-    type: 'TOGGLE_PANEL_VIEW'
+    type: ACTION.TOGGLE_PANEL_VIEW
   }
 }
 
 export const jqFilterSuccess = (response) => {
   return {
-    type: 'JQ_FILTER_SUCCESS',
+    type: ACTION.JQ_FILTER_SUCCESS,
     response
   }
 }
 
 export const jqFilterRequest = (filter) => {
   return {
-    type: 'JQ_FILTER_REQUEST',
+    type: ACTION.JQ_FILTER_REQUEST,
     filter
   }
 }
 
 export const jqFilterFailure = (error) => {
   return {
-    type: 'JQ_FILTER_FAILURE',
+    type: ACTION.JQ_FILTER_FAILURE,
     error
   }
 }
 
-// const log = (...args) => {
-//   console.log(...args)
-// }
-
-// export const togglePanel = () => {
-//   // const textEditor = atom.workspace.getActiveTextEditor()
-//   // textEditor.getText()
-//   const activePane = atom.workspace.getActivePaneItem()
-//   const activeFile = activePane.buffer.file
-//   const activeFilePath = activeFile.path
-//   console.log('activeFile', activeFile)
-//   console.log('filePath', activeFilePath)
-//
-//   run('keys', activeFilePath)
-//     .then(log)
-//     .catch(log)
-// }
+export const setActivePane = (activePaneItem) => {
+  return {
+    type: ACTION.SET_ACTIVE_PANE,
+    activePaneItem
+  }
+}

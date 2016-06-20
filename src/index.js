@@ -1,15 +1,24 @@
 /** @babel */
 /* global atom */
 
+import React from 'react'
+import { render, unmountComponentAtNode } from 'react-dom'
 import { CompositeDisposable } from 'atom'
-import { start, destroy } from './render'
-import { togglePanelView } from './actions'
-import { store } from './components/App'
+import { store } from './store'
+import { App } from './App'
+import { togglePanelView, setActivePane } from './actions'
+
+const rootDOMId = 'atom-jq-root'
+let rootDOMNode = null
 
 export default {
-  activate (state) {
+  activate () {
     console.log('atom-jq activated')
-    start()
+    rootDOMNode = document.createElement('atom-panel')
+    document.querySelector('body').appendChild(rootDOMNode)
+    rootDOMNode.setAttribute('id', rootDOMId)
+
+    render(<App {...store} />, rootDOMNode)
 
     this.subscriptions = new CompositeDisposable()
 
@@ -20,10 +29,18 @@ export default {
         }
       })
     )
+
+    this.subscriptions.add(
+      atom.workspace.onDidChangeActivePaneItem((item) => {
+        store.dispatch(setActivePane(item))
+      })
+    )
   },
 
   deactivate () {
-    destroy()
+    console.clear()
+    document.querySelector(`#${rootDOMId}`).remove()
+    unmountComponentAtNode(rootDOMNode)
     this.subscriptions.dispose()
   }
 

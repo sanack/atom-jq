@@ -1,31 +1,35 @@
 /** @babel */
-/* global atom */
+/** global atom */
 
-const activePane = atom.workspace.getActivePaneItem()
-const activeFile = activePane.buffer.file
-const activeFilePath = activeFile.path
+import { ACTIONS as ACTION } from './constants'
 
 const initialState = {
-  isPanelViewHidden: true,
-  isModalViewHidden: false,
-  activeFilePath: activeFilePath
+  isPanelHidden: true,
+  isModalHidden: false,
+  activePaneItem: atom.workspace.getActivePaneItem()
 }
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
-    case 'TOGGLE_PANEL_VIEW':
+    case ACTION.SET_ACTIVE_PANE:
       return {
         ...state,
-        isPanelViewHidden: !state.isPanelViewHidden
+        activePaneItem: action.activePaneItem
       }
 
-    case 'JQ_FILTER_SUCCESS':
+    case ACTION.TOGGLE_PANEL_VIEW:
+      return {
+        ...state,
+        isPanelHidden: !state.isPanelHidden
+      }
+
+    case ACTION.JQ_FILTER_SUCCESS:
       return {
         ...state,
         filter: action.response
       }
 
-    case 'JQ_FILTER_FAILURE':
+    case ACTION.JQ_FILTER_FAILURE:
       return {
         ...state,
         filter: action.error
