@@ -1,8 +1,14 @@
 /** @babel */
+/* global atom */
+
+const activePane = atom.workspace.getActivePaneItem()
+const activeFile = activePane.buffer.file
+const activeFilePath = activeFile.path
 
 const initialState = {
-  isPanelViewHidden: false,
-  isModalViewHidden: false
+  isPanelViewHidden: true,
+  isModalViewHidden: false,
+  activeFilePath: activeFilePath
 }
 
 const reducers = (state = initialState, action) => {
@@ -13,10 +19,16 @@ const reducers = (state = initialState, action) => {
         isPanelViewHidden: !state.isPanelViewHidden
       }
 
-    case 'RUN_JQ_FILTER':
+    case 'JQ_FILTER_SUCCESS':
       return {
         ...state,
-        filter: action.filter
+        filter: action.response
+      }
+
+    case 'JQ_FILTER_FAILURE':
+      return {
+        ...state,
+        filter: action.error
       }
 
     default:

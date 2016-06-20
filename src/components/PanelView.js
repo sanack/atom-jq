@@ -1,18 +1,21 @@
 /** @babel */
 
 import React from 'react'
-import classNames from 'classnames'
+// import classNames from 'classnames'
 import { connect } from 'react-redux'
-import { runJqFilter } from '../actions'
+import { jqFilterSuccess, jqFilterFailure } from '../actions'
+import { run } from 'node-jq'
 
-let PanelView = ({ isPanelViewHidden, dispatch }) => {
-  const classes = classNames(
-    'atom-jq-panel-view',
-    {
-      'atom-jq-hidden': false
-    }
-  )
+const jq = (filter) => {
+  return (dispatch, { jsonPath }) => {
+    return run(filter, jsonPath).then(
+      output => dispatch(jqFilterSuccess(output)),
+      error => dispatch(jqFilterFailure(error))
+     )
+  }
+}
 
+const PanelView = ({ isPanelViewHidden, dispatch }) => {
   let input
 
   const runFilter = (event) => {
@@ -20,7 +23,7 @@ let PanelView = ({ isPanelViewHidden, dispatch }) => {
     if (!input.value) {
       return
     }
-    dispatch(runJqFilter(input.value))
+    dispatch(jq(input.value))
   }
 
   const stylesInput = {
@@ -37,15 +40,16 @@ let PanelView = ({ isPanelViewHidden, dispatch }) => {
 
   return (
     <div style={stylePanel} tabindex='-1'>
-      <form onSubmit={runFilter}>
-        <input
-          style={stylesInput}
-          ref={(node) => { input = node }}
-        />
-        <button type='submit'>
-          RUN FILTER
-        </button>
-      </form>
+      <input
+        style={stylesInput}
+        ref={(node) => { input = node }}
+      />
+      <button
+        type='submit'
+        onClick={runFilter}
+      >
+        RUN FILTER
+      </button>
     </div>
   )
 }
@@ -62,9 +66,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-PanelView = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PanelView)
-
-export default PanelView

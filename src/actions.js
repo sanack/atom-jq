@@ -1,17 +1,29 @@
 /** @babel */
 
-// import { run } from 'node-jq'
-
 export const togglePanelView = () => {
   return {
     type: 'TOGGLE_PANEL_VIEW'
   }
 }
 
-export const runJqFilter = (filter) => {
+export const jqFilterSuccess = (response) => {
   return {
-    type: 'RUN_JQ_FILTER',
+    type: 'JQ_FILTER_SUCCESS',
+    response
+  }
+}
+
+export const jqFilterRequest = (filter) => {
+  return {
+    type: 'JQ_FILTER_REQUEST',
     filter
+  }
+}
+
+export const jqFilterFailure = (error) => {
+  return {
+    type: 'JQ_FILTER_FAILURE',
+    error
   }
 }
 
