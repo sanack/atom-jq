@@ -5,6 +5,12 @@
 #atom-jq-root {
   @min-width: 200px; // min width before it starts scrolling
 
+  input {
+    border: 1px solid @input-border-color;
+    color:            @text-color;
+    background-color: @input-background-color;
+  }
+
   .jq-panel {
     display: flex;
     padding: 20px;
@@ -19,6 +25,7 @@
     min-width: 450px;
     width: 100%;
     margin-right: 20px;
+    color: black;
   }
 
   // .input-block {

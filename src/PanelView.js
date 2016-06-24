@@ -1,51 +1,56 @@
 /** @babel */
 
-import React from 'react'
+import React, { Component } from 'react'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
-import { jqFilterSuccess, jqFilterFailure } from './actions'
-import { run } from 'node-jq'
-import AtomTextInput from './AtomTextInput'
+import { bindActionCreators } from 'redux'
+import * as jqActions from './actions'
 
-const jq = (filter) => {
-  return (dispatch, getState) => {
-    const { activePaneItem } = getState()
-    return run(filter, activePaneItem.getText(), { input: 'string' }).then(
-      output => dispatch(jqFilterSuccess(output)),
-      error => dispatch(jqFilterFailure(error))
-     )
-  }
-}
-
-const PanelView = ({ isPanelHidden, dispatch }) => {
-  let input
-
-  const runFilter = () => {
-    dispatch(jq(input.value))
-  }
-
-  const panelClasses = classNames(
-    'jq-panel',
-    {
-      'jq-panel__hidden': isPanelHidden
+class PanelView extends Component {
+  runJq () {
+    const { value } = this.input
+    if (value) {
+      this.props.actions.jqFilterRequest(value)
     }
-  )
+  }
 
-  return (
-    <div className={panelClasses}>
-      <AtomTextInput
-        className='jq-panel-input  input-block-item'
-        ref={(node) => { input = node }}
-      />
-      <button
-        className='btn'
-        type='submit'
-        onClick={runFilter}
-      >
-        RUN FILTER
-      </button>
-    </div>
-  )
+  onKeyPressHandler (event) {
+    if (event.key === 'Enter') {
+      this.runJq()
+    }
+  }
+
+  setInputReference (node) {
+    this.input = node
+  }
+
+  render () {
+    const jqPanelClass = classNames(
+      'jq-panel',
+      {
+        'jq-panel__hidden': !this.props.isPanelHidden
+      }
+    )
+
+    return (
+      <div className={jqPanelClass}>
+        <input
+          tabindex='-1'
+          ref={this.setInputReference.bind(this)}
+          className='jq-panel-input  input-block-item  native-key-bindings'
+          onKeyPress={this.onKeyPressHandler.bind(this)}
+          placeholder='Write here the filter'
+        />
+        <button
+          className='btn'
+          type='submit'
+          onClick={this.runJq.bind(this)}
+        >
+          RUN FILTER
+        </button>
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = ({ isPanelHidden }) => {
@@ -56,7 +61,7 @@ const mapStateToProps = ({ isPanelHidden }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatch
+    actions: bindActionCreators(jqActions, dispatch)
   }
 }
 

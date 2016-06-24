@@ -11,27 +11,35 @@ export const togglePanelView = () => {
 export const jqFilterSuccess = (response) => {
   return {
     type: ACTION.JQ_FILTER_SUCCESS,
-    response
+    payload: {
+      response
+    }
   }
 }
 
 export const jqFilterRequest = (filter) => {
   return {
     type: ACTION.JQ_FILTER_REQUEST,
-    filter
+    payload: {
+      filter
+    }
   }
 }
 
 export const jqFilterFailure = (error) => {
   return {
     type: ACTION.JQ_FILTER_FAILURE,
-    error
+    payload: {
+      error
+    }
   }
 }
 
 export const setActivePane = (activePaneItem) => {
   return {
     type: ACTION.SET_ACTIVE_PANE,
-    activePaneItem
+    payload: {
+      activePaneItem
+    }
   }
 }

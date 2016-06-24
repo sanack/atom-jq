@@ -34,17 +34,23 @@ export default {
     )
 
     this.subscriptions.add(
-      atom.workspace.onDidChangeActivePaneItem((item) => {
-        store.dispatch(setActivePane(item))
+      atom.workspace.onDidChangeActivePaneItem((paneItem) => {
+        store.dispatch(setActivePane(paneItem))
       })
+    )
+
+    store.dispatch(
+      setActivePane(
+        atom.workspace.getActivePaneItem()
+      )
     )
   },
 
   deactivate () {
     console.clear()
-    document.querySelector(`#${rootDOMId}`).remove()
     unmountComponentAtNode(rootDOMNode)
+    // FIXME: Remove DOMNode correctly (removing also the parentNode)
+    document.querySelector(`#${rootDOMId}`).remove()
     this.subscriptions.dispose()
   }
-
 }
