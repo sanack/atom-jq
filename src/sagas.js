@@ -8,16 +8,6 @@ import { ACTIONS as ACTION } from './constants'
 
 const ONE_SEC = 1000
 
-// const jq = (filter) => {
-//   return (dispatch, getState) => {
-//     const { activePaneItem } = getState()
-//     return run(filter, activePaneItem.getText(), { input: 'string' }).then(
-//       output => dispatch(jqFilterSuccess(output)),
-//       error => dispatch(jqFilterFailure(error))
-//      )
-//   }
-// }
-
 function * jq () {
   while (true) {
     const action = yield take(ACTION.JQ_FILTER_REQUEST)
