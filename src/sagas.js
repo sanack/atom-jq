@@ -24,9 +24,12 @@ function * jq () {
     const activePaneItem = yield select(state => state.activePaneItem)
     const { payload: { filter } } = action
     const filePath = activePaneItem.buffer.file.path
-    const { success, error } = yield run(filter, filePath)
-    console.log('success', success)
-    console.log('error', error)
+    try {
+      const result = yield run(filter, filePath)
+      yield call(ACTION.OPEN_MODAL, result)
+    } catch (e) {
+      yield call(ACTION.JQ_FILTER_FAILURE)
+    }
     yield call(delay, ONE_SEC)
   }
 }
