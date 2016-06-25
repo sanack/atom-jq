@@ -8,6 +8,12 @@ export const togglePanelView = () => {
   }
 }
 
+export const openModalView = () => {
+  return {
+    type: ACTION.OPEN_MODAL_VIEW
+  }
+}
+
 export const jqFilterSuccess = (response) => {
   return {
     type: ACTION.JQ_FILTER_SUCCESS,

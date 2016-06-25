@@ -8,6 +8,7 @@ const initialState = {
   isModalHidden: false,
   activePaneItem: '',
   reponse: '',
+  error: '',
   filter: ''
 }
 
@@ -29,6 +30,13 @@ const reducers = (state = initialState, action) => {
         isPanelHidden: !state.isPanelHidden
       }
 
+    case ACTION.TOGGLE_MODAL_VIEW:
+      return {
+        ...state,
+        isModalHidden: !state.isModalHidden,
+        modalData: action.payload.data
+      }
+
     case ACTION.JQ_FILTER_SUCCESS:
       return {
         ...state,
@@ -36,9 +44,10 @@ const reducers = (state = initialState, action) => {
       }
 
     case ACTION.JQ_FILTER_FAILURE:
+    console.log('payload', action.payload)
       return {
         ...state,
-        filter: action.payload.error
+        error: action.payload.error
       }
 
     default:
