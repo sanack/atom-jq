@@ -2,9 +2,15 @@
 
 import { ACTIONS as ACTION } from './constants'
 
-export const togglePanelView = () => {
+export const openPanelView = () => {
   return {
-    type: ACTION.TOGGLE_PANEL_VIEW
+    type: ACTION.OPEN_PANEL_VIEW
+  }
+}
+
+export const closePanelView = () => {
+  return {
+    type: ACTION.CLOSE_PANEL_VIEW
   }
 }
 

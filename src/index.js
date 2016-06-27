@@ -27,23 +27,27 @@ export default {
 
     this.subscriptions.add(
       atom.commands.add('atom-workspace', {
-        'atom-jq:toggle': () => {
-          store.dispatch(togglePanelView())
+        'atom-jq:open': () => {
+          store.dispatch(openPanelView())
+          store.dispatch(focusBottomInput())
+        },
+        'atom-jq:close': () => store.dispatch(closePanelView()),
+        'core:close': () => store.dispatch(closePanelView()),
+        'core:cancel': () => store.dispatch(closePanelView())
+      })
+    )
+
+    const { isPanelVisible } = store.getState()
+    this.subscriptions.add(
+      atom.workspace.onDidChangeActivePaneItem((paneItem) => {
+        if (isPanelVisible) {
+          store.dispatch(setActivePane(paneItem))
         }
       })
     )
 
-    this.subscriptions.add(
-      atom.workspace.onDidChangeActivePaneItem((paneItem) => {
-        store.dispatch(setActivePane(paneItem))
-      })
-    )
-
-    store.dispatch(
-      setActivePane(
-        atom.workspace.getActivePaneItem()
-      )
-    )
+    const activePaneItem = atom.workspace.getActivePaneItem()
+    store.dispatch(setActivePane(activePaneItem))
   },
 
   deactivate () {
