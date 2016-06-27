@@ -49,7 +49,6 @@ export default {
   deactivate () {
     console.clear()
     unmountComponentAtNode(rootDOMNode)
-    // FIXME: Remove DOMNode correctly (removing also the parentNode)
     document.querySelector(`#${rootDOMId}`).remove()
     this.subscriptions.dispose()
   }

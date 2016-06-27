@@ -1,4 +1,5 @@
 /** @babel */
+/* global atom */
 
 import { put, call, select, take, fork } from 'redux-saga/effects'
 import { run } from 'node-jq'
@@ -11,7 +12,6 @@ function * jq () {
     const filePath = activePaneItem.buffer.file.path
     try {
       const result = yield call(run, filter, filePath)
-      console.log('result', result)
       yield put({ type: ACTION.OPEN_MODAL_VIEW, payload: { result } })
     } catch (error) {
       yield put({ type: ACTION.JQ_FILTER_FAILURE, payload: { error: error.message } })
@@ -19,8 +19,25 @@ function * jq () {
   }
 }
 
+const openResultPane = (resultContent) => {
+  const options = {
+    activatePane: false,
+    split: 'right'
+  }
+
+  atom.workspace.open('atom-jq-result.json', options).then((editor) => {
+    editor.setText(resultContent)
+  })
+}
+
+function * openResultPaneListener () {
+  const { payload: { result } } = yield take(ACTION.OPEN_MODAL_VIEW)
+  openResultPane(result)
+}
+
 export default function * sagas () {
   yield [
-    fork(jq)
+    fork(jq),
+    fork(openResultPaneListener)
   ]
 }
