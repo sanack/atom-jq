@@ -14,29 +14,11 @@ export const openModalView = () => {
   }
 }
 
-export const jqFilterSuccess = (response) => {
-  return {
-    type: ACTION.JQ_FILTER_SUCCESS,
-    payload: {
-      response
-    }
-  }
-}
-
 export const jqFilterRequest = (filter) => {
   return {
     type: ACTION.JQ_FILTER_REQUEST,
     payload: {
       filter
-    }
-  }
-}
-
-export const jqFilterFailure = (error) => {
-  return {
-    type: ACTION.JQ_FILTER_FAILURE,
-    payload: {
-      error
     }
   }
 }
