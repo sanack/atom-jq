@@ -1,9 +1,9 @@
 /** @babel */
-/* global atom */
 
 import { put, call, select, take, fork } from 'redux-saga/effects'
-import { run } from 'node-jq'
 import { ACTIONS as ACTION } from './constants'
+import { run } from 'node-jq'
+import { openResultPane } from './workspaceWrapper'
 
 function * jqRequestListener () {
   while (true) {
@@ -17,17 +17,6 @@ function * jqRequestListener () {
       yield put({ type: ACTION.SHOW_ERROR_MESSAGE, payload: { error: error.message } })
     }
   }
-}
-
-const openResultPane = (resultContent) => {
-  const options = {
-    activatePane: false,
-    split: 'right'
-  }
-
-  atom.workspace.open('atom-jq-result.json', options).then((editor) => {
-    editor.setText(resultContent)
-  })
 }
 
 function * openResultPaneListener () {
