@@ -31,3 +31,12 @@ export const setActivePane = (activePaneItem) => {
     }
   }
 }
+
+export const focusBottomInput = (focus) => {
+  return {
+    type: ACTION.FOCUS_BOTTOM_INPUT,
+    payload: {
+      focus
+    }
+  }
+}

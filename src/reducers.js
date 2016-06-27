@@ -4,7 +4,8 @@
 import { ACTIONS as ACTION } from './constants'
 
 const initialState = {
-  isPanelHidden: true,
+  isPanelVisible: false,
+  isBottomPanelFocused: false,
   activePaneItem: null
 }
 
@@ -17,10 +18,22 @@ const reducers = (state = initialState, action) => {
         activePaneItem: action.payload.activePaneItem
       }
 
-    case ACTION.TOGGLE_PANEL_VIEW:
+    case ACTION.OPEN_PANEL_VIEW:
       return {
         ...state,
-        isPanelHidden: !state.isPanelHidden
+        isPanelVisible: true
+      }
+
+    case ACTION.CLOSE_PANEL_VIEW:
+      return {
+        ...state,
+        isPanelVisible: false
+      }
+
+    case ACTION.FOCUS_BOTTOM_INPUT:
+      return {
+        ...state,
+        isBottomPanelFocused: true
       }
 
     default:

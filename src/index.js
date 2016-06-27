@@ -6,7 +6,7 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import { CompositeDisposable } from 'atom'
 import { store } from './store'
 import { App } from './App'
-import { togglePanelView, setActivePane } from './actions'
+import { openPanelView, closePanelView, setActivePane, focusBottomInput } from './actions'
 
 const rootDOMId = 'atom-jq-root'
 let rootDOMNode = null

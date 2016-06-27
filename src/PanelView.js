@@ -1,6 +1,7 @@
 /** @babel */
 
 import React, { Component } from 'react'
+import { findDOMNode } from 'react-dom'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -24,22 +25,32 @@ class PanelView extends Component {
     this.input = node
   }
 
+  componentDidMount () {
+    // HACK: Add randome timeout of 1800ms for focus 'inmediatly' after render
+    setTimeout(() => {
+      findDOMNode(this.input).focus()
+    }, 1800)
+  }
+
   render () {
     const jqPanelClass = classNames(
       'jq-panel',
       {
-        'jq-panel__hidden': !this.props.isPanelHidden
+        'jq-panel__hidden': !this.props.isPanelVisible
       }
     )
 
     return (
-      <div className={jqPanelClass}>
+      <div
+        tabindex='-1'
+        className={jqPanelClass}
+      >
         <input
           tabindex='-1'
           ref={this.setInputReference.bind(this)}
           className='jq-panel-input  input-block-item  native-key-bindings'
           onKeyPress={this.onKeyPressHandler.bind(this)}
-          placeholder='Write here the filter'
+          placeholder='Write here the filter, example: keys'
         />
         <button
           className='btn'
@@ -53,9 +64,10 @@ class PanelView extends Component {
   }
 }
 
-const mapStateToProps = ({ isPanelHidden }) => {
+const mapStateToProps = ({ isPanelVisible, isBottomPanelFocused }) => {
   return {
-    isPanelHidden
+    isPanelVisible,
+    isBottomPanelFocused
   }
 }
 
