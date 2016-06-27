@@ -5,7 +5,7 @@ import { put, call, select, take, fork } from 'redux-saga/effects'
 import { run } from 'node-jq'
 import { ACTIONS as ACTION } from './constants'
 
-function * jq () {
+function * jqRequestListener () {
   while (true) {
     const { payload: { filter } } = yield take(ACTION.JQ_FILTER_REQUEST)
     const activePaneItem = yield select(state => state.activePaneItem)
@@ -31,13 +31,15 @@ const openResultPane = (resultContent) => {
 }
 
 function * openResultPaneListener () {
-  const { payload: { result } } = yield take(ACTION.OPEN_MODAL_VIEW)
-  openResultPane(result)
+  while (true) {
+    const { payload: { result } } = yield take(ACTION.OPEN_MODAL_VIEW)
+    openResultPane(result)
+  }
 }
 
 export default function * sagas () {
   yield [
-    fork(jq),
+    fork(jqRequestListener),
     fork(openResultPaneListener)
   ]
 }
