@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 import reducers from './reducers'
 import rootSaga from './sagas'
 
-const logger = createLogger()
+const logger = createLogger({ collapsed: true, diff: true })
 const saga = createSagaMiddleware()
 
 export const store = createStore(
