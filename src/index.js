@@ -13,7 +13,7 @@ let rootDOMNode = null
 
 export default {
   activate () {
-    console.log('atom-jq activated')
+    console.log('atom-jq Activated')
     rootDOMNode = document.createElement('atom-panel')
     document.querySelector('.vertical .bottom').appendChild(rootDOMNode)
     rootDOMNode.setAttribute('id', rootDOMId)
@@ -25,15 +25,29 @@ export default {
 
     this.subscriptions = new CompositeDisposable()
 
+    const { isPanelVisible } = store.getState()
+
     this.subscriptions.add(
       atom.commands.add('atom-workspace', {
         'atom-jq:open': () => {
           store.dispatch(openPanelView())
           store.dispatch(focusBottomInput())
         },
-        'atom-jq:close': () => store.dispatch(closePanelView()),
-        'core:close': () => store.dispatch(closePanelView()),
-        'core:cancel': () => store.dispatch(closePanelView())
+        'atom-jq:close': () => {
+          if (isPanelVisible) {
+            store.dispatch(closePanelView())
+          }
+        },
+        'core:close': () => {
+          if (isPanelVisible) {
+            store.dispatch(closePanelView())
+          }
+        },
+        'core:cancel': () => {
+          if (isPanelVisible) {
+            store.dispatch(closePanelView())
+          }
+        }
       })
     )
 

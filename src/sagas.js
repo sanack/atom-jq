@@ -1,4 +1,5 @@
 /** @babel */
+/* global atom */
 
 import { put, call, select, take, fork } from 'redux-saga/effects'
 import { ACTIONS as ACTION } from './constants'
@@ -18,8 +19,9 @@ function * jqRequestListener () {
       })
     } catch (error) {
       yield put({
-        type: ACTION.SHOW_ERROR_MESSAGE,
-        payload: { error: error.message }
+        type: ACTION.OPEN_MODAL_VIEW,
+        payload: { result: null },
+        error: error.message
       })
     }
   }
@@ -27,8 +29,12 @@ function * jqRequestListener () {
 
 function * openResultPaneListener () {
   while (true) {
-    const { payload: { result } } = yield take(ACTION.OPEN_MODAL_VIEW)
-    openResultPane(result)
+    const { payload: { result }, error } = yield take(ACTION.OPEN_MODAL_VIEW)
+    if (error) {
+      atom.notifications.addInfo(error)
+    } else {
+      openResultPane(result)
+    }
   }
 }
 
