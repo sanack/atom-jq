@@ -12,9 +12,15 @@ function * jqRequestListener () {
     const filePath = activePaneItem.buffer.file.path
     try {
       const result = yield call(run, filter, filePath)
-      yield put({ type: ACTION.OPEN_MODAL_VIEW, payload: { result } })
+      yield put({
+        type: ACTION.OPEN_MODAL_VIEW,
+        payload: { result }
+      })
     } catch (error) {
-      yield put({ type: ACTION.SHOW_ERROR_MESSAGE, payload: { error: error.message } })
+      yield put({
+        type: ACTION.SHOW_ERROR_MESSAGE,
+        payload: { error: error.message }
+      })
     }
   }
 }

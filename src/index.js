@@ -37,12 +37,9 @@ export default {
       })
     )
 
-    const { isPanelVisible } = store.getState()
     this.subscriptions.add(
       atom.workspace.onDidChangeActivePaneItem((paneItem) => {
-        if (isPanelVisible) {
-          store.dispatch(setActivePane(paneItem))
-        }
+        store.dispatch(setActivePane(paneItem))
       })
     )
 
