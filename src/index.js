@@ -7,13 +7,14 @@ import { CompositeDisposable } from 'atom'
 import { store } from './store'
 import { App } from './App'
 import { openPanelView, closePanelView, setActivePane, focusBottomInput } from './actions'
+import { log, clear } from './debugAtom'
 
 const rootDOMId = 'atom-jq-root'
 let rootDOMNode = null
 
 export default {
   activate () {
-    console.log('atom-jq Activated')
+    log('atom-jq Activated')
     rootDOMNode = document.createElement('atom-panel')
     document.querySelector('.vertical .bottom').appendChild(rootDOMNode)
     rootDOMNode.setAttribute('id', rootDOMId)
@@ -62,7 +63,7 @@ export default {
   },
 
   deactivate () {
-    console.clear()
+    clear()
     unmountComponentAtNode(rootDOMNode)
     document.querySelector(`#${rootDOMId}`).remove()
     this.subscriptions.dispose()
