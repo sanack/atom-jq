@@ -5,13 +5,11 @@
   "version": "0.0.2",
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d lib",
-    "build:watch": "npm run build -- -w",
-    "lint": "standard --versbose | snazzy",
+    "lint": "snazzy",
     "test": ""
   },
   "activationCommands": {},
-  "repository": "https://github.com/davesnx/atom-jq",
+  "repository": "https://github.com/sanack/atom-jq",
   "engines": {
     "atom": "*"
   },
