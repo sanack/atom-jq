@@ -5,6 +5,7 @@ import { put, call, select, take, fork } from 'redux-saga/effects'
 import { ACTIONS as ACTION } from './constants'
 import { run } from 'node-jq'
 import { openResultPane } from './workspaceWrapper'
+import { log } from './debugAtom'
 
 function * jqRequestListener () {
   while (true) {
@@ -31,8 +32,10 @@ function * openResultPaneListener () {
   while (true) {
     const { payload: { result }, error } = yield take(ACTION.OPEN_MODAL_VIEW)
     if (error) {
+      log(error)
       atom.notifications.addInfo(error)
     } else {
+      log(result)
       openResultPane(result)
     }
   }
