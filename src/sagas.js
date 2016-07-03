@@ -7,7 +7,7 @@ import { run } from 'node-jq'
 import { openResultPane } from './workspaceWrapper'
 import { log } from './debugAtom'
 
-function * jqRequestListener () {
+function * requestListener () {
   while (true) {
     const { payload: { filter } } = yield take(ACTION.JQ_FILTER_REQUEST)
     const activePaneItem = yield select(state => state.activePaneItem)
@@ -28,7 +28,7 @@ function * jqRequestListener () {
   }
 }
 
-function * openResultPaneListener () {
+function * resultListener () {
   while (true) {
     const { payload: { result }, error } = yield take(ACTION.OPEN_MODAL_VIEW)
     if (error) {
@@ -43,7 +43,7 @@ function * openResultPaneListener () {
 
 export default function * sagas () {
   yield [
-    fork(jqRequestListener),
-    fork(openResultPaneListener)
+    fork(requestListener),
+    fork(resultListener)
   ]
 }
