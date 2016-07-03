@@ -1,59 +1,79 @@
 /** @babel */
 
-import React from 'react'
+import React, { Component } from 'react'
+import { findDOMNode } from 'react-dom'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
-import { jqFilterSuccess, jqFilterFailure } from './actions'
-import { run } from 'node-jq'
-import AtomTextEditor from './AtomTextEditor'
+import { bindActionCreators } from 'redux'
+import * as jqActions from './actions'
 
-const jq = (filter) => {
-  return (dispatch, getState) => {
-    const { activePaneItem } = getState()
-    return run(filter, activePaneItem.getText(), { input: 'string' }).then(
-      output => dispatch(jqFilterSuccess(output)),
-      error => dispatch(jqFilterFailure(error))
-     )
-  }
-}
-
-const PanelView = ({ isPanelHidden, dispatch }) => {
-  let input
-
-  const runFilter = () => {
-    dispatch(jq(input.value))
+class PanelView extends Component {
+  runJq () {
+    const { value } = this.input
+    if (value) {
+      this.props.actions.jqFilterRequest(value)
+    }
   }
 
-  const stylePanel = {
-    display: (!isPanelHidden && 'none')
+  onKeyPressHandler (event) {
+    if (event.key === 'Enter') {
+      this.runJq()
+    }
   }
 
-  return (
-    <div className='input-block' style={stylePanel}>
-      <AtomTextEditor
-        className='input-block-item'
-        ref={(node) => { input = node }}
-      />
-      <button
-        className='btn'
-        type='submit'
-        onClick={runFilter}
+  setInputReference (node) {
+    this.input = node
+  }
+
+  componentDidMount () {
+    // HACK: Add randome timeout of 1800ms for focus 'inmediatly' after render
+    setTimeout(() => {
+      findDOMNode(this.input).focus()
+    }, 1800)
+  }
+
+  render () {
+    const jqPanelClass = classNames(
+      'jq-panel',
+      {
+        'jq-panel__hidden': !this.props.isPanelVisible
+      }
+    )
+
+    return (
+      <div
+        tabindex='-1'
+        className={jqPanelClass}
       >
-        RUN FILTER
-      </button>
-    </div>
-  )
+        <input
+          tabindex='-1'
+          ref={this.setInputReference.bind(this)}
+          className='jq-panel-input  input-block-item  native-key-bindings'
+          onKeyPress={this.onKeyPressHandler.bind(this)}
+          placeholder='Write here the filter, example: keys'
+        />
+        <button
+          className='btn'
+          type='submit'
+          onClick={this.runJq.bind(this)}
+        >
+          RUN FILTER
+        </button>
+      </div>
+    )
+  }
 }
 
-const mapStateToProps = ({ isPanelHidden }) => {
+const mapStateToProps = ({ isPanelVisible, isBottomPanelFocused }) => {
   return {
-    isPanelHidden
+    isPanelVisible,
+    isBottomPanelFocused
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatch
+    actions: bindActionCreators(jqActions, dispatch)
   }
 }
 

@@ -4,35 +4,36 @@
 import { ACTIONS as ACTION } from './constants'
 
 const initialState = {
-  isPanelHidden: true,
-  isModalHidden: false,
-  activePaneItem: atom.workspace.getActivePaneItem()
+  isPanelVisible: false,
+  isBottomPanelFocused: false,
+  activePaneItem: null
 }
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
+
     case ACTION.SET_ACTIVE_PANE:
       return {
         ...state,
-        activePaneItem: action.activePaneItem
+        activePaneItem: action.payload.activePaneItem
       }
 
-    case ACTION.TOGGLE_PANEL_VIEW:
+    case ACTION.OPEN_PANEL_VIEW:
       return {
         ...state,
-        isPanelHidden: !state.isPanelHidden
+        isPanelVisible: true
       }
 
-    case ACTION.JQ_FILTER_SUCCESS:
+    case ACTION.CLOSE_PANEL_VIEW:
       return {
         ...state,
-        filter: action.response
+        isPanelVisible: false
       }
 
-    case ACTION.JQ_FILTER_FAILURE:
+    case ACTION.FOCUS_BOTTOM_INPUT:
       return {
         ...state,
-        filter: action.error
+        isBottomPanelFocused: true
       }
 
     default:

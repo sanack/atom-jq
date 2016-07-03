@@ -6,7 +6,7 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import { CompositeDisposable } from 'atom'
 import { store } from './store'
 import { App } from './App'
-import { togglePanelView, setActivePane } from './actions'
+import { openPanelView, closePanelView, setActivePane, focusBottomInput } from './actions'
 
 const rootDOMId = 'atom-jq-root'
 let rootDOMNode = null
@@ -27,24 +27,30 @@ export default {
 
     this.subscriptions.add(
       atom.commands.add('atom-workspace', {
-        'atom-jq:toggle': () => {
-          store.dispatch(togglePanelView())
-        }
+        'atom-jq:open': () => {
+          store.dispatch(openPanelView())
+          store.dispatch(focusBottomInput())
+        },
+        'atom-jq:close': () => store.dispatch(closePanelView()),
+        'core:close': () => store.dispatch(closePanelView()),
+        'core:cancel': () => store.dispatch(closePanelView())
       })
     )
 
     this.subscriptions.add(
-      atom.workspace.onDidChangeActivePaneItem((item) => {
-        store.dispatch(setActivePane(item))
+      atom.workspace.onDidChangeActivePaneItem((paneItem) => {
+        store.dispatch(setActivePane(paneItem))
       })
     )
+
+    const activePaneItem = atom.workspace.getActivePaneItem()
+    store.dispatch(setActivePane(activePaneItem))
   },
 
   deactivate () {
     console.clear()
-    document.querySelector(`#${rootDOMId}`).remove()
     unmountComponentAtNode(rootDOMNode)
+    document.querySelector(`#${rootDOMId}`).remove()
     this.subscriptions.dispose()
   }
-
 }
