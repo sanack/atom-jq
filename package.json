@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "snazzy",
-    "test": ""
+    "test": "mocha"
   },
   "activationCommands": {},
   "repository": "https://github.com/sanack/atom-jq",
@@ -29,6 +29,8 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
+    "expect": "^1.20.2",
+    "mocha": "^2.5.3",
     "redux-logger": "^2.6.1",
     "snazzy": "^4.0.0",
     "standard": "^7.1.2"
@@ -37,7 +39,9 @@
   "configSchema": {},
   "standard": {
     "global": [
-      "atom"
+      "atom",
+      "describe",
+      "it"
     ]
   }
 }

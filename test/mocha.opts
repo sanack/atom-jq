@@ -1,0 +1,4 @@
+--require expect
+--reporter dot
+--ui bdd
+--compilers js:babel-register
