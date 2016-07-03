@@ -4,7 +4,7 @@
 import { ACTIONS as ACTION } from './constants'
 
 const initialState = {
-  isPanelVisible: true,
+  isPanelVisible: false,
   isBottomPanelFocused: false,
   activePaneItem: null
 }
