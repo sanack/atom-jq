@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "snazzy",
-    "test": "babel-node ./test/index.js | tap-spec",
-    "test:w": "nodemon --exec babel-node ./test/index.js | tap-spec"
+    "test": "TESTING=true babel-node ./test/index.js | tap-spec",
+    "test:w": "nodemon --quiet --exec npm run test"
   },
   "activationCommands": {},
   "repository": "https://github.com/sanack/atom-jq",
@@ -30,6 +30,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
+    "enzyme": "^2.3.0",
     "expect": "^1.20.2",
     "mocha": "^2.5.3",
     "nodemon": "^1.9.2",
