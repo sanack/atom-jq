@@ -15,8 +15,12 @@ export default {
   activate () {
     console.log('atom-jq activated')
     rootDOMNode = document.createElement('atom-panel')
-    document.querySelector('.vertical .bottom').appendChild(rootDOMNode)
-    rootDOMNode.setAttribute('id', rootDOMId)
+    atom.workspace.addBottomPanel({
+      item: rootDOMNode,
+      visible: true,
+      className: rootDOMId,
+      priority: 10
+    })
 
     render(
       <App {...store} />,
@@ -50,7 +54,7 @@ export default {
   deactivate () {
     console.clear()
     unmountComponentAtNode(rootDOMNode)
-    document.querySelector(`#${rootDOMId}`).remove()
+    document.querySelector(`.${rootDOMId}`).remove()
     this.subscriptions.dispose()
   }
 }
