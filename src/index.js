@@ -55,6 +55,11 @@ export default {
     console.clear()
     unmountComponentAtNode(rootDOMNode)
     document.querySelector(`.${rootDOMId}`).remove()
+
+    atom.workspace.getBottomPanels()
+      .filter((panel) => panel.className === rootDOMId)
+      .map((panel) => panel.destroy())
+
     this.subscriptions.dispose()
   }
 }
