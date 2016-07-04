@@ -1,15 +1,8 @@
 @import "ui-variables";
 @import "syntax-variables";
 
-// Both project and buffer FNR styles
 .atom-jq-root {
-  @min-width: 200px; // min width before it starts scrolling
-
-  input {
-    border: 1px solid @input-border-color;
-    color:            @text-color;
-    background-color: @input-background-color;
-  }
+  &:extend(.atom-workspace);
 
   .jq-panel {
     display: flex;
@@ -22,9 +15,21 @@
 
   .jq-panel-input {
     flex: 1;
+    background-color: lighten(@syntax-background-color, 5%);
+    color: @text-color;
     min-width: 450px;
     width: 100%;
+    letter-spacing: 0.9px;
     margin-right: 20px;
-    color: black;
+    border: none;
+    border-radius: 0.125rem;
+    box-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.12), 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.24);
+    font-size: 0.9rem;
+    padding-left: 15px;
+  }
+
+  .btn {
+    border-radius: 0.125rem;
+    background-color: lighten(@syntax-background-color, 5%);
   }
 }
