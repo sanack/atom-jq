@@ -3,7 +3,7 @@
 import { applyMiddleware, createStore } from 'redux'
 import createLogger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
-import reducers from './reducers'
+import reducers, { initialState } from './reducers'
 import rootSaga from './sagas'
 import { isAtomInDebugMode } from './debugAtom'
 
@@ -19,4 +19,4 @@ export const store = createStore(
   applyMiddleware(...middlewares)
 )
 
-saga.run(rootSaga)
+saga.run(rootSaga, initialState)

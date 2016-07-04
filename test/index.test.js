@@ -1,0 +1,20 @@
+
+import test from 'tape'
+import atomJq from './../src'
+
+
+test('atom-jq export', (assert) => {
+  assert.equal(
+    atomJq.hasOwnProperty('activate'),
+    true,
+    'should have a activate property'
+  )
+
+  assert.equal(
+    atomJq.hasOwnProperty('deactivate'),
+    true,
+    'should have a deactivate property'
+  )
+
+  assert.end()
+})
