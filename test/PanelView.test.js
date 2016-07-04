@@ -1,5 +1,3 @@
-/** @babel */
-
 import test from 'tape'
 import PanelView from './../src/PanelView'
 import React from 'react'
