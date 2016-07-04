@@ -5,7 +5,6 @@ import { ACTIONS as ACTION } from './constants'
 
 const initialState = {
   isPanelVisible: false,
-  isBottomPanelFocused: false,
   activePaneItem: null
 }
 
@@ -28,12 +27,6 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         isPanelVisible: false
-      }
-
-    case ACTION.FOCUS_BOTTOM_INPUT:
-      return {
-        ...state,
-        isBottomPanelFocused: true
       }
 
     default:
