@@ -2,9 +2,10 @@
 /** global atom */
 
 import { ACTIONS as ACTION } from './constants'
+import { isAtomInDebugMode } from './debugAtom'
 
 const initialState = {
-  isPanelVisible: false,
+  isPanelVisible: isAtomInDebugMode || false,
   isBottomPanelFocused: false,
   activePaneItem: null
 }
