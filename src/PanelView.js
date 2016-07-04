@@ -42,11 +42,11 @@ class PanelView extends Component {
 
     return (
       <div
-        tabindex='-1'
+        tabIndex='-1'
         className={jqPanelClass}
       >
         <input
-          tabindex='-1'
+          tabIndex='-1'
           ref={this.setInputReference.bind(this)}
           className='jq-panel-input  input-block-item  native-key-bindings'
           onKeyPress={this.onKeyPressHandler.bind(this)}
