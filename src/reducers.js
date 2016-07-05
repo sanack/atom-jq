@@ -5,7 +5,7 @@ import { ACTIONS as ACTION } from './constants'
 import { isAtomInDebugMode } from './debugAtom'
 
 export const initialState = {
-  isPanelVisible: isAtomInDebugMode || false,
+  isPanelVisible: isAtomInDebugMode,
   isBottomPanelFocused: false,
   activePaneItem: null,
   filter: null
