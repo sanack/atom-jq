@@ -1,5 +1,2 @@
-import expect from 'expect'
-
-describe('Dummy test', function () {
-  expect(false).toBeTruthy()
-})
+import requireDir from 'require-dir'
+requireDir('./')
