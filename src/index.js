@@ -7,13 +7,14 @@ import { CompositeDisposable } from 'atom'
 import { store } from './store'
 import { App } from './App'
 import { openPanelView, closePanelView, setActivePane, focusBottomInput } from './actions'
+import { log, clear } from './debugAtom'
 
 const rootDOMId = 'atom-jq-root'
 let rootDOMNode = null
 
 export default {
   activate () {
-    console.log('atom-jq activated')
+    log('atom-jq Activated')
     rootDOMNode = document.createElement('atom-panel')
     atom.workspace.addBottomPanel({
       item: rootDOMNode,
@@ -29,15 +30,29 @@ export default {
 
     this.subscriptions = new CompositeDisposable()
 
+    const { isPanelVisible } = store.getState()
+
     this.subscriptions.add(
       atom.commands.add('atom-workspace', {
         'atom-jq:open': () => {
           store.dispatch(openPanelView())
           store.dispatch(focusBottomInput())
         },
-        'atom-jq:close': () => store.dispatch(closePanelView()),
-        'core:close': () => store.dispatch(closePanelView()),
-        'core:cancel': () => store.dispatch(closePanelView())
+        'atom-jq:close': () => {
+          if (isPanelVisible) {
+            store.dispatch(closePanelView())
+          }
+        },
+        'core:close': () => {
+          if (isPanelVisible) {
+            store.dispatch(closePanelView())
+          }
+        },
+        'core:cancel': () => {
+          if (isPanelVisible) {
+            store.dispatch(closePanelView())
+          }
+        }
       })
     )
 
@@ -52,9 +67,14 @@ export default {
   },
 
   deactivate () {
-    console.clear()
+    clear()
     unmountComponentAtNode(rootDOMNode)
     document.querySelector(`.${rootDOMId}`).remove()
+
+    atom.workspace.getBottomPanels()
+      .filter((panel) => panel.className === rootDOMId)
+      .map((panel) => panel.destroy())
+
     this.subscriptions.dispose()
   }
 }

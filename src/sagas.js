@@ -1,40 +1,49 @@
 /** @babel */
+/* global atom */
 
 import { put, call, select, take, fork } from 'redux-saga/effects'
 import { ACTIONS as ACTION } from './constants'
 import { run } from 'node-jq'
 import { openResultPane } from './workspaceWrapper'
+import { getActivePaneItem } from './reducers'
+import { log } from './debugAtom'
 
-function * jqRequestListener () {
+export function * requestListener () {
   while (true) {
     const { payload: { filter } } = yield take(ACTION.JQ_FILTER_REQUEST)
-    const activePaneItem = yield select(state => state.activePaneItem)
-    const filePath = activePaneItem.buffer.file.path
+    const activePaneItem = yield select(getActivePaneItem)
     try {
-      const result = yield call(run, filter, filePath)
+      const result = yield call(run, filter, activePaneItem)
       yield put({
         type: ACTION.OPEN_MODAL_VIEW,
         payload: { result }
       })
     } catch (error) {
       yield put({
-        type: ACTION.SHOW_ERROR_MESSAGE,
-        payload: { error: error.message }
+        type: ACTION.OPEN_MODAL_VIEW,
+        payload: { result: null },
+        error: error.message
       })
     }
   }
 }
 
-function * openResultPaneListener () {
+export function * resultListener () {
   while (true) {
-    const { payload: { result } } = yield take(ACTION.OPEN_MODAL_VIEW)
-    openResultPane(result)
+    const { payload: { result }, error } = yield take(ACTION.OPEN_MODAL_VIEW)
+    if (error) {
+      log(error)
+      atom.notifications.addInfo(error)
+    } else {
+      log(result)
+      openResultPane(result)
+    }
   }
 }
 
 export default function * sagas () {
   yield [
-    fork(jqRequestListener),
-    fork(openResultPaneListener)
+    fork(requestListener),
+    fork(resultListener)
   ]
 }

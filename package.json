@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "snazzy",
-    "test": "mocha"
+    "test": "TESTING=true babel-node ./test/index.js | tap-spec",
+    "test:w": "nodemon --quiet --exec npm run test"
   },
   "activationCommands": {},
   "repository": "https://github.com/sanack/atom-jq",
@@ -24,16 +25,20 @@
     "redux-saga": "^0.10.5"
   },
   "devDependencies": {
+    "atom": "^1.0.0",
     "babel-cli": "^6.0.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
-    "expect": "^1.20.2",
-    "mocha": "^2.5.3",
+    "enzyme": "^2.3.0",
+    "nodemon": "^1.9.2",
     "redux-logger": "^2.6.1",
+    "require-dir": "^0.3.0",
     "snazzy": "^4.0.0",
-    "standard": "^7.1.2"
+    "standard": "^7.1.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
   },
   "providedServices": {},
   "configSchema": {},
