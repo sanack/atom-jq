@@ -33,6 +33,7 @@
     "babel-register": "^6.9.0",
     "enzyme": "^2.3.0",
     "nodemon": "^1.9.2",
+    "react-addons-test-utils": "^15.2.0",
     "redux-logger": "^2.6.1",
     "require-dir": "^0.3.0",
     "snazzy": "^4.0.0",
