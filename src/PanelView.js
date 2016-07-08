@@ -1,7 +1,6 @@
 /** @babel */
 
 import React, { Component } from 'react'
-import { findDOMNode } from 'react-dom'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -28,7 +27,7 @@ class PanelView extends Component {
   componentDidMount () {
     // HACK: Add randome timeout of 1800ms for focus 'inmediatly' after render
     setTimeout(() => {
-      findDOMNode(this.input).focus()
+      this.input.focus()
     }, 1800)
   }
 

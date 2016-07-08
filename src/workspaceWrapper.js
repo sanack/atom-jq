@@ -7,7 +7,7 @@ export const openResultPane = (resultContent) => {
     split: 'right' // TODO: Use config for set it
   }
 
-  atom.workspace.open('atom-jq-result.json', options).then((editor) => {
-    editor.setText(resultContent)
-  })
+  atom.workspace.open(null, options)
+    .then((editor) => editor.setText(resultContent))
+    .catch((err) => atom.notifications.addInfo(err))
 }
