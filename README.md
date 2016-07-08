@@ -1,5 +1,22 @@
 # atom-jq
 
-[![Join the chat at https://gitter.im/sanack/atom-jq](https://badges.gitter.im/sanack/atom-jq.svg)](https://gitter.im/sanack/atom-jq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+<p align="center">
+  <a href="http://standardjs.com/"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?maxAge=3600"></a>
+  <a href="https://gitter.im/sanack/atom-jq"><img src="https://badges.gitter.im/davesnx/node-jq.svg"></a>
+</p>
 
-Work in progress...
+A playground for jq inside atom
+
+## Run jq inside atom
+
+
+
+## Install
+
+```bash
+apm install atom-jq
+```
+
+or
+
+Search 'atom-jq' inside atom.

@@ -2,7 +2,7 @@
   "name": "atom-jq",
   "main": "./src/index.js",
   "description": "",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "license": "MIT",
   "scripts": {
     "lint": "snazzy",
@@ -32,7 +32,6 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
     "enzyme": "^2.3.0",
-    "nodemon": "^1.9.2",
     "react-addons-test-utils": "^15.2.0",
     "redux-logger": "^2.6.1",
     "require-dir": "^0.3.0",
