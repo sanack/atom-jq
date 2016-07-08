@@ -6,7 +6,7 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import { CompositeDisposable } from 'atom'
 import { store } from './store'
 import { App } from './App'
-import { openPanelView, closePanelView, setActivePane, focusBottomInput } from './actions'
+import { openPanelView, closePanelView, setActivePane } from './actions'
 import { log, clear } from './debugAtom'
 
 const rootDOMId = 'atom-jq-root'
@@ -36,7 +36,6 @@ export default {
       atom.commands.add('atom-workspace', {
         'atom-jq:open': () => {
           store.dispatch(openPanelView())
-          store.dispatch(focusBottomInput())
         },
         'atom-jq:close': () => {
           if (isPanelVisible) {
