@@ -7,7 +7,7 @@ import { CompositeDisposable } from 'atom'
 import { store } from './store'
 import { App } from './App'
 import { openPanelView, closePanelView, setActivePane } from './actions'
-import { log, clear } from './debugAtom'
+import { log, clear } from './debug'
 
 const rootDOMId = 'atom-jq-root'
 let rootDOMNode = null

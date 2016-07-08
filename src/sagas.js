@@ -6,7 +6,7 @@ import { ACTIONS as ACTION } from './constants'
 import { run } from 'node-jq'
 import { openResultPane } from './workspaceWrapper'
 import { getActivePaneItem } from './reducers'
-import { log } from './debugAtom'
+import { log } from './debug'
 
 export function * requestListener () {
   while (true) {
