@@ -17,12 +17,18 @@ A playground for jq inside atom
 > UI Theme: [Atom Material](https://atom.io/themes/atom-material-ui)
 Syntax Theme: [Flatland](https://atom.io/themes/flatland)
 
-## Install
+## Prerequisites
 
+You need [jq installed](https://stedolan.github.io/jq/download/) before you can do anything with this plugin.
+
+```bash
+sudo apt-get install jq
+```
+## Install
+Search '**atom-jq**' in `Setings > Packages` or
 ```bash
 apm install atom-jq
 ```
-or search '**atom-jq**' in `Setings > Packages`.
 
 ## Work in progress
 
