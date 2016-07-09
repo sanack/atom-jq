@@ -12,7 +12,7 @@ A playground for jq inside atom
 
 ### Run jq inside atom
 
-![DEMO ATOM JQ](docs/assets/atom-jq-demo.gif)
+![DEMO ATOM JQ](https://raw.githubusercontent.com/sanack/atom-jq/master/docs/assets/atom-jq-demo.gif)
 
 > UI Theme: [Atom Material](https://atom.io/themes/atom-material-ui)
 Syntax Theme: [Flatland](https://atom.io/themes/flatland)
