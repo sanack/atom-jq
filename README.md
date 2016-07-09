@@ -23,3 +23,26 @@ Syntax Theme: [Flatland](https://atom.io/themes/flatland)
 apm install atom-jq
 ```
 or search '**atom-jq**' in `Setings > Packages`.
+
+## Work in progress
+
+The 0.3.0 version is pretty functional, but we want to get all the feedback possible for implement new features.
+
+In case that you are interested on some feature, come to say it in our [gitter](https://gitter.im/sanack/atom-jq).
+
+## Roadmap
+
+#### Version 0.5.0
+
+- [ ] Support JSON5.
+- [ ] Focus directly on open atom-jq.
+- [ ] Open also the result panel.
+- [ ] Implement Atom configs, open lateral the results, etc...
+
+#### Version 1.0.0
+
+- [ ] Implement Highlight option: lint the original JSON during the time you'r writting the query.
+
+#### Version 2.0.0
+
+- [ ] Autocomplete the query input with the JSON props.
