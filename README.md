@@ -1,6 +1,6 @@
-<p style="text-align: center">
-  <img src="https://raw.githubusercontent.com/sanack/atom-jq/master/docs/assets/atom-jq-logo.png"/>
-  <p>A playground for jq inside atom</p>
+<p align="center">
+  <img width="300" src="https://raw.githubusercontent.com/sanack/atom-jq/master/docs/assets/atom-jq-logo.png"/>
+  <p align="center">A playground for jq inside atom</p>
 </p>
 
 <p align="center">
