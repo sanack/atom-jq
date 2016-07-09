@@ -1,6 +1,7 @@
-# atom-jq
-
-A playground for jq inside atom
+<p style="text-align: center">
+  <img src="https://raw.githubusercontent.com/sanack/atom-jq/master/docs/assets/atom-jq-logo.png"/>
+  <p>A playground for jq inside atom</p>
+</p>
 
 <p align="center">
   <a href="http://standardjs.com/"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?maxAge=3600"></a>
