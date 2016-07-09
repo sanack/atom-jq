@@ -4,7 +4,8 @@ A playground for jq inside atom
 
 <p align="center">
   <a href="http://standardjs.com/"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?maxAge=3600"></a>
-  <a href="https://gitter.im/sanack/atom-jq"><img src="https://badges.gitter.im/davesnx/node-jq.svg"></a>
+  <a href="https://gitter.im/sanack/atom-jq"><img src="https://badges.gitter.im/davesnx/atom-jq.svg"></a>
+  <a href="https://travis-ci.org/sanack/atom-jq"><img src="https://img.shields.io/travis/sanack/atom-jq/master.svg?maxAge=3600"></a>
 </p>
 
 ---
