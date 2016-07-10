@@ -39,9 +39,8 @@ In case that you are interested on some feature, come to say it in our [gitter](
 
 ## Roadmap
 
-#### Version 0.5.0
+#### Version 0.6.0
 
-- [ ] Support JSON5.
 - [ ] Focus directly on open atom-jq.
 - [ ] Open also the result panel.
 - [ ] Implement Atom configs, open lateral the results, etc...

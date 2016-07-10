@@ -35,5 +35,4 @@ describe('#atom-jq', () => {
       console.log('...args', ...args)
     })
   })
-
 })
