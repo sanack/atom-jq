@@ -1,13 +1,13 @@
 // import test from 'tape'
-// import PanelView from './../src/PanelView'
+// import InputBottomView from './../src/InputBottomView'
 // import React from 'react'
 // import { render } from 'enzyme'
 // import reducers from './../src/reducers'
 // import { createStore } from 'redux'
 //
-// test('<PanelView />', (assert) => {
+// test('<InputBottomView />', (assert) => {
 //   const store = createStore(reducers)
-//   const mockStaticRender = render(<PanelView store={store} />)
+//   const mockStaticRender = render(<InputBottomView store={store} />)
 //   assert.equal(
 //     mockStaticRender.find('.jq-panel').length,
 //     1,

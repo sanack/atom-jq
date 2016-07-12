@@ -2,12 +2,12 @@
 // import reducers from './../src/reducers'
 // import { ACTIONS as ACTION } from './../src/constants'
 //
-// test('openPanelView', (assert) => {
+// test('openInputBottomView', (assert) => {
 //   const expectedState = {
 //     isPanelVisible: true
 //   }
 //   const nextState = reducers(
-//     null, { type: ACTION.OPEN_PANEL_VIEW }
+//     null, { type: ACTION.OPEN_INPUT_BOTTOM_VIEW }
 //   )
 //
 //   assert.deepEqual(
@@ -18,12 +18,12 @@
 //   assert.end()
 // })
 //
-// test('closePanelView', (assert) => {
+// test('closeInputBottomView', (assert) => {
 //   const expectedState = {
 //     isPanelVisible: false
 //   }
 //   const nextState = reducers(
-//     null, { type: ACTION.CLOSE_PANEL_VIEW }
+//     null, { type: ACTION.CLOSE_INPUT_BOTTOM_VIEW }
 //   )
 //
 //   assert.deepEqual(
