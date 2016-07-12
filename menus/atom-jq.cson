@@ -1,7 +1,10 @@
 'menu': [
-  'label': 'jq'
+  'label': 'Packages'
   'submenu': [
-    { 'label': 'Open jq', 'command': 'atom-jq:open' }
-    { 'label': 'close jq', 'command': 'atom-jq:close' }
+    'label': 'jq'
+    'submenu': [
+      { 'label': 'Open jq', 'command': 'atom-jq:open' }
+      { 'label': 'Close jq', 'command': 'atom-jq:close' }
+    ]
   ]
 ]
