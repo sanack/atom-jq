@@ -1,3 +1,5 @@
+/** @babel */
+
 import atomJq from './../lib'
 
 describe('#atom-jq export', () => {
