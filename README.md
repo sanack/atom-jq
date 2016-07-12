@@ -33,6 +33,6 @@ apm install atom-jq
 
 ## Work in progress
 
-The 0.3.0 version is pretty functional, but we want to get all the feedback possible for implement new features.
+The 0.5.2 version is pretty functional, but we want to get all the feedback possible for implement new features.
 
 In case that you are interested on some feature, come to say it in our [gitter](https://gitter.im/sanack/atom-jq).
