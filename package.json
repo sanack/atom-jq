@@ -6,6 +6,11 @@
   "license": "MIT",
   "activationCommands": {},
   "repository": "https://github.com/sanack/atom-jq",
+  "scripts": {
+    "posttest": "snazzy",
+    "test": "TESTING=true babel-node ./test/index.js | tap-spec",
+    "test:w": "nodemon --quiet --exec npm run test"
+  },
   "engines": {
     "atom": "*"
   },
@@ -35,12 +40,13 @@
     "global": [
       "atom",
       "describe",
-      "it"
+      "it",
+      "expect"
     ]
   },
   "config": {
     "ghooks": {
-      "pre-push": "snazzy"
+      "pre-push": "npm test"
     }
   }
 }
