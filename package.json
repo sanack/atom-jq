@@ -8,8 +8,9 @@
   "repository": "https://github.com/sanack/atom-jq",
   "scripts": {
     "posttest": "snazzy",
-    "test": "TESTING=true babel-node ./test/index.js | tap-spec",
-    "test:w": "nodemon --quiet --exec npm run test"
+    "unit": "TESTING=true babel-node ./test/index.js | tap-spec",
+    "unit:w": "nodemon --quiet --exec npm run test",
+    "test": "curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh"
   },
   "engines": {
     "atom": "*"
