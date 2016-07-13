@@ -40,3 +40,4 @@ build/Release # Compiled binary addons (http://nodejs.org/api/addons.html)
 # nodemon
 .monitor
 a.json
+docs/use_cases
