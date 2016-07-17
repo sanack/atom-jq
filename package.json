@@ -10,8 +10,8 @@
     "lint": "snazzy lib/ test/ spec/",
     "posttest": "npm run lint",
     "unit": "TESTING=true babel-node ./test/index.js | tap-spec",
-    "unit:w": "nodemon --quiet --exec npm run test",
-    "test": "curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh"
+    "unit:w": "nodemon --quiet --exec npm run unit",
+    "test-ci": "curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh"
   },
   "engines": {
     "atom": "*"
@@ -44,6 +44,7 @@
       "atom",
       "describe",
       "it",
+      "waitsForPromise",
       "expect"
     ]
   },

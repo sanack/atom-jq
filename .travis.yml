@@ -1,6 +1,6 @@
 language: objective-c
 
-script: 'npm test'
+script: 'npm run test-ci'
 
 branches:
   only:
