@@ -39,7 +39,7 @@
   "providedServices": {},
   "configSchema": {},
   "standard": {
-    "global": [
+    "globals": [
       "atom",
       "describe",
       "it",
