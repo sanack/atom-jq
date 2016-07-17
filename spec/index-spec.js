@@ -1,3 +1,4 @@
+/** @babel */
 /* eslint-env jasmine */
 
 describe('#atom-jq export', () => {
