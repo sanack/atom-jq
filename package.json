@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "snazzy lib/ test/ spec/",
     "postunit": "npm run lint",
-    "unit": "TESTING=true node ./test/index.js | tap-spec",
+    "unit": "TESTING=true babel-node ./test/index.js | tap-spec",
     "unit:w": "nodemon --quiet --exec npm run unit"
   },
   "engines": {
