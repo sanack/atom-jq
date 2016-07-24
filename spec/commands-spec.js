@@ -1,23 +1,28 @@
 /** @babel */
 
-
 const PACKAGE_NAME = 'atom-jq'
 const ROOT_DOM_CLASS = '.atom-jq-root'
 
 const expectInputBottomViewToNotBeVisible = (workspaceElement) => {
-  expect(
-    workspaceElement.querySelector(ROOT_DOM_CLASS).children[0].children[0].className
-  ).not.toContain(
-    'jq-panel__hidden'
-  )
-}
+  const InputBottomViewDOMNode = workspaceElement.querySelector(ROOT_DOM_CLASS).children[0].children[0]
 
-const expectInputBottomViewToBeVisible = (workspaceElement) => {
   expect(
-    workspaceElement.querySelector(ROOT_DOM_CLASS).children[0].children[0].className
+    InputBottomViewDOMNode.className
   ).toContain(
     'jq-panel__hidden'
   )
+  expect(InputBottomViewDOMNode).not.toBeVisible()
+}
+
+const expectInputBottomViewToBeVisible = (workspaceElement) => {
+  const InputBottomViewDOMNode = workspaceElement.querySelector(ROOT_DOM_CLASS).children[0].children[0]
+
+  expect(
+    InputBottomViewDOMNode.className
+  ).not.toContain(
+    'jq-panel__hidden'
+  )
+  expect(InputBottomViewDOMNode).toBeVisible()
 }
 
 describe('atom-jq', () => {
