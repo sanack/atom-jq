@@ -1,10 +1,10 @@
 /** @babel */
-/* global atom */
+
 
 describe('atom-jq export', () => {
   let mainModule = null
 
-  beforeEach((done) => {
+  beforeEach(() => {
     waitsForPromise(() => {
       return atom.packages.activatePackage('atom-jq').then((pack) => {
         mainModule = pack.mainModule
@@ -19,4 +19,18 @@ describe('atom-jq export', () => {
     expect(mainModule.activate).toBeDefined()
     expect(mainModule.deactivate).toBeDefined()
   })
+
+  it('should be activated', () => {
+    expect(atom.packages.isPackageActive('atom-jq')).toBe(true)
+  })
+
+  // it('should deactivate', () => {
+  //   waitsForPromise(() => {
+  //     return atom.packages.deactivatePackage('atom-jq').then((pack) => {
+  //       mainModule = pack.mainModule
+  //       return
+  //     })
+  //   })
+  //   expect(atom.packages.isPackageActive('atom-jq')).toBe(true)
+  // })
 })
