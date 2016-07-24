@@ -1,13 +1,13 @@
 /** @babel */
 
-import { PACKAGE_NAME } from './constants'
+import constants from './constants'
 
-describe(`${PACKAGE_NAME} export`, () => {
-  let mainModule = null
+describe(constants.PACKAGE_NAME + ' export', () => {
+  var mainModule = null
 
   beforeEach(() => {
     waitsForPromise(() => {
-      return atom.packages.activatePackage(PACKAGE_NAME).then((pack) => {
+      return atom.packages.activatePackage(constants.PACKAGE_NAME).then((pack) => {
         mainModule = pack.mainModule
         return
       })
@@ -22,7 +22,7 @@ describe(`${PACKAGE_NAME} export`, () => {
   })
 
   it('should be activated', () => {
-    expect(atom.packages.isPackageActive(PACKAGE_NAME)).toBe(true)
+    expect(atom.packages.isPackageActive(constants.PACKAGE_NAME)).toBe(true)
   })
 
   // it('should deactivate', () => {

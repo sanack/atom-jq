@@ -1,34 +1,27 @@
 /** @babel */
 
-import {
-  PACKAGE_NAME,
-  OPEN_COMMAND,
-  CLOSE_COMMAND,
-  ROOT_DOM_CLASS,
-  JQ_PANEL_HIDDEN_CLASS
-} from './constants'
+import constants from './constants'
+import utils from './utils'
 
-import {
-  getInputBottomViewDOMNode,
-  openJqPanel,
-  closeJqPanel
-} from './utils'
+const getInputBottomViewDOMNode = utils.getInputBottomViewDOMNode
+const openJqPanel = utils.getInputBottomViewDOMNode
+const closeJqPanel = utils.closeJqPanel
 
 const expectInputBottomViewToNotBeVisible = (workspaceElement) => {
   const InputBottomViewDOMNode = getInputBottomViewDOMNode(workspaceElement)
 
-  expect(InputBottomViewDOMNode.className).toContain(JQ_PANEL_HIDDEN_CLASS)
+  expect(InputBottomViewDOMNode.className).toContain(constants.JQ_PANEL_HIDDEN_CLASS)
   expect(InputBottomViewDOMNode).not.toBeVisible()
 }
 
 const expectInputBottomViewToBeVisible = (workspaceElement) => {
   const InputBottomViewDOMNode = getInputBottomViewDOMNode(workspaceElement)
 
-  expect(InputBottomViewDOMNode.className).not.toContain(JQ_PANEL_HIDDEN_CLASS)
+  expect(InputBottomViewDOMNode.className).not.toContain(constants.JQ_PANEL_HIDDEN_CLASS)
   expect(InputBottomViewDOMNode).toBeVisible()
 }
 
-describe(PACKAGE_NAME, () => {
+describe(constants.PACKAGE_NAME, () => {
   let workspaceElement
 
   beforeEach(() => {
@@ -36,15 +29,15 @@ describe(PACKAGE_NAME, () => {
 
     runs(() => {
       jasmine.attachToDOM(workspaceElement)
-      atom.packages.activatePackage(PACKAGE_NAME)
+      atom.packages.activatePackage(constants.PACKAGE_NAME)
     })
   })
 
   it('should add InputBottomView into workspace', () => {
-    expect(workspaceElement.querySelector(ROOT_DOM_CLASS)).toExist()
+    expect(workspaceElement.querySelector(constants.ROOT_DOM_CLASS)).toExist()
   })
 
-  describe(OPEN_COMMAND, () => {
+  describe(constants.OPEN_COMMAND, () => {
     it('should open the InputBottomView', () => {
       runs(() => {
         openJqPanel(workspaceElement)
@@ -53,7 +46,7 @@ describe(PACKAGE_NAME, () => {
     })
   })
 
-  describe(CLOSE_COMMAND, () => {
+  describe(constants.CLOSE_COMMAND, () => {
     it('should close the InputBottomView', () => {
       runs(() => {
         closeJqPanel(workspaceElement)
