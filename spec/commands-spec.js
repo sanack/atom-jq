@@ -1,8 +1,12 @@
 /** @babel */
 
-const PACKAGE_NAME = 'atom-jq'
-const ROOT_DOM_CLASS = '.atom-jq-root'
-const JQ_PANEL_HIDDEN_CLASS = 'jq-panel__hidden'
+import {
+  PACKAGE_NAME,
+  OPEN_COMMAND,
+  CLOSE_COMMAND,
+  ROOT_DOM_CLASS,
+  JQ_PANEL_HIDDEN_CLASS
+} from './constants-spec'
 
 const getInputBottomViewDOMNode = (workspaceElement) => {
   return workspaceElement.querySelector(ROOT_DOM_CLASS).children[0].children[0]
@@ -22,7 +26,7 @@ const expectInputBottomViewToBeVisible = (workspaceElement) => {
   expect(InputBottomViewDOMNode).toBeVisible()
 }
 
-describe('atom-jq', () => {
+describe(PACKAGE_NAME, () => {
   let workspaceElement
 
   beforeEach(() => {
@@ -38,19 +42,19 @@ describe('atom-jq', () => {
     expect(workspaceElement.querySelector(ROOT_DOM_CLASS)).toExist()
   })
 
-  describe(':open', () => {
+  describe(OPEN_COMMAND, () => {
     it('should open the InputBottomView', () => {
       runs(() => {
-        atom.commands.dispatch(workspaceElement, 'atom-jq:open')
+        atom.commands.dispatch(workspaceElement, `${PACKAGE_NAME}${OPEN_COMMAND}`)
         expectInputBottomViewToBeVisible(workspaceElement)
       })
     })
   })
 
-  describe(':close', () => {
+  describe(CLOSE_COMMAND, () => {
     it('should close the InputBottomView', () => {
       runs(() => {
-        atom.commands.dispatch(workspaceElement, 'atom-jq:close')
+        atom.commands.dispatch(workspaceElement, `${PACKAGE_NAME}${CLOSE_COMMAND}`)
         expectInputBottomViewToNotBeVisible(workspaceElement)
       })
     })

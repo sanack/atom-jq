@@ -1,10 +1,13 @@
 /** @babel */
 
+import {
+  openJqPanel
+} from './utils-spec'
 
 describe('Run a jq query', () => {
   describe('with a valid JSON file', () => {
     it('should open a new tab with the result', () => {
-
+      // openJqPanel(workspaceElement)
     })
   })
 

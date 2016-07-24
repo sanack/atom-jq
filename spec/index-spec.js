@@ -1,12 +1,13 @@
 /** @babel */
 
+import { PACKAGE_NAME } from './constants-spec'
 
-describe('atom-jq export', () => {
+describe(`${PACKAGE_NAME} export`, () => {
   let mainModule = null
 
   beforeEach(() => {
     waitsForPromise(() => {
-      return atom.packages.activatePackage('atom-jq').then((pack) => {
+      return atom.packages.activatePackage(PACKAGE_NAME).then((pack) => {
         mainModule = pack.mainModule
         return
       })
@@ -21,7 +22,7 @@ describe('atom-jq export', () => {
   })
 
   it('should be activated', () => {
-    expect(atom.packages.isPackageActive('atom-jq')).toBe(true)
+    expect(atom.packages.isPackageActive(PACKAGE_NAME)).toBe(true)
   })
 
   // it('should deactivate', () => {
