@@ -41,3 +41,4 @@ build/Release # Compiled binary addons (http://nodejs.org/api/addons.html)
 .monitor
 a.json
 docs/use_cases
+*.deb

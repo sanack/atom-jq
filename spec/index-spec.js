@@ -1,21 +1,39 @@
 /** @babel */
 
-import atomJq from './../lib'
+import {
+  PACKAGE_NAME
+} from './constants'
 
-describe('#atom-jq export', () => {
-  it('should have a activate property', () => {
-    expect(atomJq.hasOwnProperty('activate')).toBe(true)
-  })
+describe(PACKAGE_NAME + ' export', () => {
+  var mainModule = null
 
-  it('should have a activate property', () => {
-    expect(atomJq.hasOwnProperty('activate')).toBe(true)
-  })
-})
-
-describe('#atom-jq', () => {
-  it('', () => {
-    atom.packages.activatePackage('atom-jq').then((args) => {
-      console.log('...args', ...args)
+  beforeEach(() => {
+    waitsForPromise(() => {
+      return atom.packages.activatePackage(PACKAGE_NAME).then((pack) => {
+        mainModule = pack.mainModule
+        return
+      })
     })
   })
+
+  it('have the correct properties', () => {
+    expect(mainModule).toBeDefined()
+    expect(mainModule).toBeTruthy()
+    expect(mainModule.activate).toBeDefined()
+    expect(mainModule.deactivate).toBeDefined()
+  })
+
+  it('should be activated', () => {
+    expect(atom.packages.isPackageActive(PACKAGE_NAME)).toBe(true)
+  })
+
+  // it('should deactivate', () => {
+  //   waitsForPromise(() => {
+  //     return atom.packages.deactivatePackage('atom-jq').then((pack) => {
+  //       mainModule = pack.mainModule
+  //       return
+  //     })
+  //   })
+  //   expect(atom.packages.isPackageActive('atom-jq')).toBe(true)
+  // })
 })

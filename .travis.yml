@@ -1,6 +1,6 @@
 language: objective-c
 
-script: 'npm test'
+script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
 
 branches:
   only:
