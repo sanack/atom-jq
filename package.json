@@ -11,7 +11,7 @@
     "postunit": "npm run lint",
     "unit": "TESTING=true babel-node ./test/index.js | tap-spec",
     "unit:w": "nodemon --quiet --exec npm run unit",
-    "transpileSpecs": "babel specSrc/**/*.js -d spec/",
+    "transpileSpecs": "babel specSrc -d spec",
     "build-ci": "curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh"
   },
   "engines": {

@@ -1,0 +1,7 @@
+{
+  "name": "atom-jq",
+  "main": "./lib/index.js",
+  "description": "A playground for jq inside atom",
+  "version": "0.6.0",
+  "license": "MIT"
+}
