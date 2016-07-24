@@ -1,9 +1,9 @@
-const {
+import {
   PACKAGE_NAME,
   OPEN_COMMAND,
   CLOSE_COMMAND,
   ROOT_DOM_CLASS
-} = require('./constants-spec')
+} from './constants-spec'
 
 export const getInputBottomViewDOMNode = (workspaceElement) => {
   return workspaceElement.querySelector(ROOT_DOM_CLASS).children[0].children[0]

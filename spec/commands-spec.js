@@ -8,9 +8,11 @@ import {
   JQ_PANEL_HIDDEN_CLASS
 } from './constants-spec'
 
-const getInputBottomViewDOMNode = (workspaceElement) => {
-  return workspaceElement.querySelector(ROOT_DOM_CLASS).children[0].children[0]
-}
+import {
+  getInputBottomViewDOMNode,
+  openJqPanel,
+  closeJqPanel
+} from './utils-spec'
 
 const expectInputBottomViewToNotBeVisible = (workspaceElement) => {
   const InputBottomViewDOMNode = getInputBottomViewDOMNode(workspaceElement)
@@ -45,7 +47,7 @@ describe(PACKAGE_NAME, () => {
   describe(OPEN_COMMAND, () => {
     it('should open the InputBottomView', () => {
       runs(() => {
-        atom.commands.dispatch(workspaceElement, `${PACKAGE_NAME}${OPEN_COMMAND}`)
+        openJqPanel(workspaceElement)
         expectInputBottomViewToBeVisible(workspaceElement)
       })
     })
@@ -54,7 +56,7 @@ describe(PACKAGE_NAME, () => {
   describe(CLOSE_COMMAND, () => {
     it('should close the InputBottomView', () => {
       runs(() => {
-        atom.commands.dispatch(workspaceElement, `${PACKAGE_NAME}${CLOSE_COMMAND}`)
+        closeJqPanel(workspaceElement)
         expectInputBottomViewToNotBeVisible(workspaceElement)
       })
     })
