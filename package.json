@@ -43,10 +43,13 @@
   "standard": {
     "globals": [
       "atom",
+      "jasmine",
       "describe",
       "it",
       "waitsForPromise",
-      "expect"
+      "expect",
+      "beforeEach",
+      "runs"
     ]
   },
   "config": {
