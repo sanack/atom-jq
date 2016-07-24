@@ -42,3 +42,4 @@ build/Release # Compiled binary addons (http://nodejs.org/api/addons.html)
 a.json
 docs/use_cases
 *.deb
+specSrc/

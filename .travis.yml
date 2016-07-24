@@ -1,6 +1,6 @@
 language: objective-c
 
-script: 'npm run build-ci'
+script: 'npm install; npm run transpileSpecs; npm run build-ci'
 
 branches:
   only:
