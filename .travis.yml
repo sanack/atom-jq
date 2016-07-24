@@ -1,6 +1,6 @@
 language: objective-c
 
-script: 'npm install; npm run unit; npm run build-ci'
+script: 'npm run build-ci'
 
 branches:
   only:
