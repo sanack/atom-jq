@@ -18,10 +18,6 @@
 > UI Theme: [Atom Material](https://atom.io/themes/atom-material-ui)
 Syntax Theme: [Flatland](https://atom.io/themes/flatland)
 
-## Prerequisites
-
-You need [jq installed](https://stedolan.github.io/jq/download/) before you can do anything with this plugin.
-
 ```bash
 sudo apt-get install jq
 ```
