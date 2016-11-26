@@ -18,9 +18,6 @@
 > UI Theme: [Atom Material](https://atom.io/themes/atom-material-ui)
 Syntax Theme: [Flatland](https://atom.io/themes/flatland)
 
-```bash
-sudo apt-get install jq
-```
 ## Install
 Search '**atom-jq**' in `Setings > Packages` or
 ```bash
@@ -29,6 +26,6 @@ apm install atom-jq
 
 ## Work in progress
 
-The 0.5.2 version is pretty functional, but we want to get all the feedback possible for implement new features.
+The 0.6.2 version is pretty functional, but we want to get all the feedback possible for implement new features.
 
 In case that you are interested on some feature, come to say it in our [gitter](https://gitter.im/sanack/atom-jq).
