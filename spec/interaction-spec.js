@@ -4,9 +4,6 @@ import path from 'path'
 import { PACKAGE_NAME } from './constants'
 import {
   openJqPanel,
-  getJqInput,
-  writeJqQuery,
-  pressButtonrunQuery,
   runJqQuery
 } from './utils'
 
