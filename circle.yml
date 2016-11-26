@@ -6,8 +6,10 @@ dependencies:
 test:
   override:
     - ./build-package.sh
+  post:
+    - npm test
+    - npm run semantic-release || true
 
 machine:
   environment:
     ATOM_LINT_WITH_BUNDLED_NODE: "true"
-    APM_TEST_PACKAGES: ""

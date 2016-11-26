@@ -18,3 +18,23 @@ export const openJqPanel = (workspaceElement) => {
 export const closeJqPanel = (workspaceElement) => {
   atom.commands.dispatch(workspaceElement, `${PACKAGE_NAME}${CLOSE_COMMAND}`)
 }
+
+const getJqInput = (workspaceElement) => {
+  return workspaceElement.querySelector(`${ROOT_DOM_CLASS} input`)
+}
+
+export const writeJqQuery = (workspaceElement, queryValue) => {
+  const jqInput = getJqInput(workspaceElement)
+  jqInput.value = queryValue
+}
+
+export const pressButtonrunQuery = (workspaceElement) => {
+  workspaceElement.querySelector(`${ROOT_DOM_CLASS} button`).click()
+}
+
+export const runJqQuery = (workspaceElement, queryValue) => {
+  writeJqQuery(workspaceElement, queryValue)
+  return new Promise((resolve, reject) => {
+    resolve(pressButtonrunQuery(workspaceElement))
+  })
+}
