@@ -1,38 +1,13 @@
 /** @babel */
-/* eslint-disable */
-
-import {
-  PACKAGE_NAME,
-  ROOT_DOM_CLASS
-} from './constants'
-
-import {
-  openJqPanel
-} from './utils'
 
 import path from 'path'
+import { PACKAGE_NAME } from './constants'
+import {
+  openJqPanel,
+  runJqQuery
+} from './utils'
 
 const JSON_PATH_FIXTURE = path.join(__dirname, 'fixtures', '1.json')
-
-const getJqInput = (workspaceElement) => {
-  return workspaceElement.querySelector(`${ROOT_DOM_CLASS} input`)
-}
-
-const writeJqQuery = (workspaceElement, queryValue) => {
-  const jqInput = getJqInput(workspaceElement)
-  jqInput.value = queryValue
-}
-
-const pressButtonrunQuery = (workspaceElement) => {
-  workspaceElement.querySelector(`${ROOT_DOM_CLASS} button`).click()
-}
-
-const runJqQuery = (workspaceElement, queryValue) => {
-  writeJqQuery(workspaceElement, queryValue)
-  return new Promise((resolve, reject) => {
-    resolve(pressButtonrunQuery(workspaceElement))
-  })
-}
 
 const loadAJsonFile = () => {
   return atom.workspace.open(JSON_PATH_FIXTURE)
@@ -40,7 +15,7 @@ const loadAJsonFile = () => {
 
 const expectActivePaneBeAJson = () => {
   expect(atom.workspace.getActivePaneItem()).toExist()
-  expect(atom.workspace.getActivePaneItem().getGrammar().name).toBe('JSON')
+  // expect(atom.workspace.getActivePaneItem().getGrammar().name).toBe('JSON')
 }
 
 xdescribe('Run a jq query', () => {
@@ -57,14 +32,13 @@ xdescribe('Run a jq query', () => {
 
   describe('with a valid JSON file', () => {
     it('should open a new tab with the result', () => {
-      // loadAJsonFile()
-      //   .then(expectActivePaneBeAJson)
-      // openJqPanel(workspaceElement)
-      // runJqQuery(workspaceElement, '.')
+      loadAJsonFile().then(expectActivePaneBeAJson)
+      openJqPanel(workspaceElement)
 
       waitsForPromise(() => {
+        runJqQuery(workspaceElement, '.')
         atom.workspace.open(JSON_PATH_FIXTURE)
-        expectActivePaneBeAJson()
+          .then(expectActivePaneBeAJson)
       })
     })
   })

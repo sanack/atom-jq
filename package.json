@@ -2,15 +2,15 @@
   "name": "atom-jq",
   "main": "./lib/index.js",
   "description": "A playground for jq inside atom",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantic-release",
   "license": "MIT",
   "activationCommands": {},
   "repository": "https://github.com/sanack/atom-jq",
   "scripts": {
     "lint": "snazzy lib/ test/ spec/",
-    "postunit": "npm run lint",
-    "unit": "TESTING=true babel-node ./test/index.js | tap-spec",
-    "unit:w": "nodemon --quiet --exec npm run unit",
+    "pretest": "npm run lint",
+    "test": "babel-tape-runner ./test/*.test.js | tap-spec",
+    "test:w": "nodemon --quiet --exec npm run test",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "engines": {
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "node-jq": "latest",
+    "node-jq": "0.4.0",
     "path": "^0.12.7",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
@@ -28,6 +28,10 @@
     "redux-saga": "^0.10.5"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-tape-runner": "^2.0.1",
     "condition-circle": "^1.5.0",
     "enzyme": "^2.3.0",
     "ghooks": "^1.3.2",
@@ -47,6 +51,7 @@
       "atom",
       "jasmine",
       "describe",
+      "xdescribe",
       "it",
       "waitsForPromise",
       "expect",
@@ -58,7 +63,7 @@
     "ghooks": {
       "commit-msg": "validate-commit-msg",
       "pre-commit": "npm run lint",
-      "pre-push": "npm run unit"
+      "pre-push": "npm run test"
     }
   },
   "release": {

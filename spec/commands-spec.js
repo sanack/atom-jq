@@ -14,20 +14,6 @@ import {
   closeJqPanel
 } from './utils'
 
-const expectInputBottomViewToNotBeVisible = (workspaceElement) => {
-  const InputBottomViewDOMNode = getInputBottomViewDOMNode(workspaceElement)
-
-  expect(InputBottomViewDOMNode.className).toContain(JQ_PANEL_HIDDEN_CLASS)
-  expect(InputBottomViewDOMNode).not.toBeVisible()
-}
-
-const expectInputBottomViewToBeVisible = (workspaceElement) => {
-  const InputBottomViewDOMNode = getInputBottomViewDOMNode(workspaceElement)
-
-  expect(InputBottomViewDOMNode.className).not.toContain(JQ_PANEL_HIDDEN_CLASS)
-  expect(InputBottomViewDOMNode).toBeVisible()
-}
-
 describe(PACKAGE_NAME, () => {
   let workspaceElement
 
@@ -48,7 +34,10 @@ describe(PACKAGE_NAME, () => {
     it('should open the InputBottomView', () => {
       runs(() => {
         openJqPanel(workspaceElement)
-        expectInputBottomViewToBeVisible(workspaceElement)
+        const InputBottomViewDOMNode = getInputBottomViewDOMNode(workspaceElement)
+
+        expect(InputBottomViewDOMNode.className).not.toContain(JQ_PANEL_HIDDEN_CLASS)
+        expect(InputBottomViewDOMNode).toBeVisible()
       })
     })
   })
@@ -57,7 +46,10 @@ describe(PACKAGE_NAME, () => {
     it('should close the InputBottomView', () => {
       runs(() => {
         closeJqPanel(workspaceElement)
-        expectInputBottomViewToNotBeVisible(workspaceElement)
+        const InputBottomViewDOMNode = getInputBottomViewDOMNode(workspaceElement)
+
+        expect(InputBottomViewDOMNode.className).toContain(JQ_PANEL_HIDDEN_CLASS)
+        expect(InputBottomViewDOMNode).not.toBeVisible()
       })
     })
   })
