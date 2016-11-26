@@ -1,5 +1,5 @@
 import test from 'tape'
-import InputBottomView from './../lib/components/InputBottomView'
+import InputBottomView from '../lib/components/InputBottomView'
 import React from 'react'
 import { render } from 'enzyme'
 import reducers from './../lib/reducers'
