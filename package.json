@@ -2,7 +2,7 @@
   "name": "atom-jq",
   "main": "./lib/index.js",
   "description": "A playground for jq inside atom",
-  "version": "0.6.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "activationCommands": {},
   "repository": "https://github.com/sanack/atom-jq",
@@ -10,7 +10,8 @@
     "lint": "snazzy lib/ test/ spec/",
     "postunit": "npm run lint",
     "unit": "TESTING=true babel-node ./test/index.js | tap-spec",
-    "unit:w": "nodemon --quiet --exec npm run unit"
+    "unit:w": "nodemon --quiet --exec npm run unit",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "engines": {
     "atom": "*"
@@ -27,14 +28,17 @@
     "redux-saga": "^0.10.5"
   },
   "devDependencies": {
+    "condition-circle": "^1.5.0",
     "enzyme": "^2.3.0",
     "ghooks": "^1.3.2",
     "react-addons-test-utils": "^15.2.0",
     "require-dir": "^0.3.0",
+    "semantic-release": "^6.3.2",
     "snazzy": "^4.0.0",
     "standard": "^7.1.2",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "tape": "^4.6.0",
+    "validate-commit-msg": "^2.8.2"
   },
   "providedServices": {},
   "configSchema": {},
@@ -52,8 +56,14 @@
   },
   "config": {
     "ghooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "npm run lint",
       "pre-push": "npm run unit"
     }
+  },
+  "release": {
+    "verifyConditions": "condition-circle",
+    "branch": "master"
   },
   "babel": {
     "presets": [
