@@ -47,6 +47,7 @@
       "atom",
       "jasmine",
       "describe",
+      "xdescribe",
       "it",
       "waitsForPromise",
       "expect",
