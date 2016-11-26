@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "snazzy lib/ test/ spec/",
     "pretest": "npm run lint",
-    "test": "  babel-tape-runner ./test/*.test.js | tap-spec",
+    "test": "babel-tape-runner ./test/*.test.js | tap-spec",
     "test:w": "nodemon --quiet --exec npm run test"
   },
   "engines": {
