@@ -2,7 +2,7 @@
   "name": "atom-jq",
   "main": "./lib/index.js",
   "description": "A playground for jq inside atom",
-  "version": "0.7.1",
+  "version": "0.7.0",
   "license": "MIT",
   "activationCommands": {},
   "repository": "https://github.com/sanack/atom-jq",
