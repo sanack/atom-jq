@@ -9,7 +9,6 @@
   <a href="https://circleci.com/gh/sanack/atom-jq"><img src="https://img.shields.io/circleci/project/sanack/atom-jq.svg?maxAge=3600"></a>
   <a href="https://atom.io/packages/atom-jq"><img src="https://img.shields.io/apm/dm/atom-jq.svg"></a>
   <a href="https://atom.io/packages/atom-jq"><img src="https://img.shields.io/apm/v/atom-jq.svg"></a>
-
 </p>
 
 ---
