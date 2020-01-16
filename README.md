@@ -1,3 +1,8 @@
+⚠️ **Disclamer**: This project was a fun experiment to create an extension for Atom, I don't use that editor anymore and there's no much downloads of this package. If you still want a playground of jq you have too options: [jqplay.org](https://jqplay.org) or [wellsjo/JSON-Splora](https://github.com/wellsjo/JSON-Splora).
+
+
+---
+
 <p align="center">
   <img width="300" src="https://raw.githubusercontent.com/sanack/atom-jq/master/docs/assets/atom-jq-logo.png"/>
   <p align="center">A playground for jq inside atom</p>
@@ -13,7 +18,8 @@
 
 ---
 
-### Run jq inside atom
+
+## Run jq inside atom
 
 ![DEMO ATOM JQ](https://raw.githubusercontent.com/sanack/atom-jq/master/docs/assets/atom-jq-demo.gif)
 
